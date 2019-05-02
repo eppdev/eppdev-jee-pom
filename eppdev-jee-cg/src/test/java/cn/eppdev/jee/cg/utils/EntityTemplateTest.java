@@ -5,6 +5,7 @@
 
 package cn.eppdev.jee.cg.utils;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,21 +21,21 @@ public class EntityTemplateTest {
     public void testBasicEntity(){
        String ftl = TemplateFileUtils.readTemplateToString("/eppdev-jee/template/entity/basic_entity.ftl");
        String result = FreeMarkerUtils.generate(ftl, SampleModelBuilder.getBasicConf());
-       System.out.println(result);
+       Assert.assertNotNull(result);
     }
 
     @Test
     public void testUpperEntity(){
         String ftl = TemplateFileUtils.readTemplateToString("/eppdev-jee/template/entity/upper_entity.ftl");
         String result = FreeMarkerUtils.generate(ftl, SampleModelBuilder.createSampleTable());
-        System.out.println(result);
+       Assert.assertNotNull(result);
     }
 
     @Test
     public void testEntity(){
         String ftl = TemplateFileUtils.readTemplateToString("/eppdev-jee/template/entity/entity.ftl");
         String result = FreeMarkerUtils.generate(ftl, SampleModelBuilder.createSampleTable());
-        System.out.println(result);
+        Assert.assertNotNull(result);
     }
 
 
