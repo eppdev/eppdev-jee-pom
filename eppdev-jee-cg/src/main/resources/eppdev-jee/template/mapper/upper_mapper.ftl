@@ -81,8 +81,8 @@
             </if>
             </#if>
             <#if column.createCompareFlag == 1>
-            <if test="_min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != null<#if column.javaType=='String'>  and _min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != ''</#if>">a.${column.columnName} &gt;= ${r"#{"}_min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}${r"}"}</if>
-            <if test="_max${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != null<#if column.javaType=='String'>  and _max${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != ''</#if>">a.${column.columnName} &lt;= ${r"#{"}_max${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}${r"}"}</if>
+            <if test="_min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != null<#if column.javaType=='String'>  and _min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != ''</#if>">and a.${column.columnName} &gt;= ${r"#{"}_min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}${r"}"}</if>
+            <if test="_max${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != null<#if column.javaType=='String'>  and _max${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != ''</#if>">and a.${column.columnName} &lt;= ${r"#{"}_max${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}${r"}"}</if>
             </#if>
             <#if column.createLikeFlag == 1>
             <if test="_like${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != null and _like${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != ''">a.${column.columnName} like ${r"#{"}_bind_like_${column.columnName}${r"}"}</if>
@@ -166,8 +166,8 @@
             </if>
             </#if>
             <#if column.createCompareFlag == 1>
-            <if test="_min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != null<#if column.javaType == 'String'> and _min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != ''</#if>">a.${column.columnName} &gt;= ${r"#{"}_min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}${r"}"}</if>
-            <if test="_max${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != null<#if column.javaType == 'String'> and _max${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != ''</#if>">a.${column.columnName} &lt;= ${r"#{"}_max${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}${r"}"}</if>
+            <if test="_min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != null<#if column.javaType == 'String'> and _min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != ''</#if>">and a.${column.columnName} &gt;= ${r"#{"}_min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}${r"}"}</if>
+            <if test="_max${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != null<#if column.javaType == 'String'> and _max${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != ''</#if>">and a.${column.columnName} &lt;= ${r"#{"}_max${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}${r"}"}</if>
             </#if>
             <#if column.createLikeFlag == 1>
             <if test="_like${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != null and _like${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != ''">a.${column.columnName} like ${r"#{"}_bind_like_${column.columnName}${r"}"}</if>

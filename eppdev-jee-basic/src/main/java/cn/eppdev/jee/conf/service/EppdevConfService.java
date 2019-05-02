@@ -46,6 +46,15 @@ public class EppdevConfService extends _EppdevConfService {
     @Value("${eppdev.git.main-branch-name:#{null}}")
     String gitMainBranchName;
 
+    @Value("${spring.datasource.url:#{null}}")
+    String dbUrl;
+
+    @Value("${spring.datasource.username:#{null}}")
+    String dbUsername;
+
+    @Value("${spring.datasource.password:#{null}}")
+    String dbPassword;
+
 
     @Override
     public void customeInit(EppdevConf entity) {
@@ -109,6 +118,15 @@ public class EppdevConfService extends _EppdevConfService {
         if (CACHED_MAP.keySet().size() == 0) {
             for (EppdevConf conf : listAll().getList()) {
                 CACHED_MAP.put(conf.getConfName(), conf.getConfValue());
+            }
+            if (dbUrl != null) {
+                CACHED_MAP.put("dbUrl", dbUrl);
+            }
+            if (dbUsername != null) {
+                CACHED_MAP.put("dbUsername", dbUsername);
+            }
+            if (dbPassword != null ) {
+                CACHED_MAP.put("dbPassword", dbPassword);
             }
         }
         return CACHED_MAP;
