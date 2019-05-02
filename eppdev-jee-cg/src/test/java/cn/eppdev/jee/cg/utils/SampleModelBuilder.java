@@ -51,6 +51,7 @@ public class SampleModelBuilder {
         column.setDbColumnType("char");
         column.setPrimaryKeyFlag(1);
         column.setCreateCompareFlag(0);
+        column.setCreateEqualFlag(1);
         column.setCreateLikeFlag(0);
         column.setCreateLeftLikeFlag(0);
         column.setCreateLikeFlag(0);
@@ -66,6 +67,7 @@ public class SampleModelBuilder {
         column1.setJavaType("Integer");
         column1.setDbColumnType("Integer");
         column1.setPrimaryKeyFlag(0);
+        column1.setCreateEqualFlag(0);
         column1.setCreateCompareFlag(1);
         column1.setCreateLikeFlag(0);
         column1.setCreateLeftLikeFlag(0);
@@ -82,6 +84,7 @@ public class SampleModelBuilder {
         column2.setPropertyName("name");
         column2.setJavaType("String");
         column2.setDbColumnType("varchar");
+        column2.setCreateEqualFlag(0);
         column2.setCreateCompareFlag(0);
         column2.setCreateLikeFlag(1);
         column2.setCreateLeftLikeFlag(1);

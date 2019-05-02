@@ -5,6 +5,7 @@
 
 package cn.eppdev.jee.cg.utils;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,13 +20,13 @@ public class ServiceTemplateTest {
     public void testBasicService(){
         String ftl = TemplateFileUtils.readTemplateToString("/eppdev-jee/template/service/basic_service.ftl");
         String result = FreeMarkerUtils.generate(ftl, SampleModelBuilder.getBasicConf());
-        System.out.println(result);
+        Assert.assertNotNull(result);
     }
 
     @Test
     public void testService(){
         String ftl = TemplateFileUtils.readTemplateToString("/eppdev-jee/template/service/service.ftl");
         String result = FreeMarkerUtils.generate(ftl, SampleModelBuilder.createSampleTable());
-        System.out.println(result);
+        Assert.assertNotNull(result);
     }
 }
