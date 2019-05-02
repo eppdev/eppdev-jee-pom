@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head(~{:: title})">
+    <title>表详情</title>
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css"/>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: navbar">navbar</nav>
+<div class="container">
+    <div th:insert="fragments/alert :: alert">alert</div>
+    <h3 class="text-center" th:text="${table.tableName + ' 表详情'}">表详情</h3>
+    <hr/>
+    <div class="row">
+        <div class="col-sm-6">
+            <p>所属版本：
+                <a th:href="@{'/web/conf/version/view/' + ${table.versionId} }">
+                    <span th:text="${table.version.versionName}"></span></a>
+            </p>
+        </div>
+        <div class="col-sm-6">
+            <p>所属模块：
+                <span th:text="${table.moduleName}"></span>
+            </p>
+        </div>
+        <div class="col-sm-6">
+            <p>实体名称：
+                <span th:text="${table.entityName}"></span>
+            </p>
+        </div>
+        <div class="col-sm-6">
+            <p>表说明：
+                <span th:text="${table.tableComment}"></span>
+            </p>
+        </div>
+        <div class="col-sm-6">
+            <p>创建时间：
+                <span th:text="${#dates.format(table.createDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
+            </p>
+        </div>
+        <div class="col-sm-6">
+            <p>修改时间：
+                <span th:text="${#dates.format(table.updateDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
+            </p>
+        </div>
+        <div class="col-sm-12">
+            <p>备注：
+                <small th:text="${table.remarks}"></small>
+            </p>
+        </div>
+    </div>
+    <hr/>
+    <div class="row panel panel-default">
+        <div class="panel-heading">字段列表</div>
+        <div class="panel-body">
+            <div class="text-right">
+                <a th:href="@{'/web/conf/version/' + ${table.versionId} + '/table/' + ${table.id} + '/column/add/to'} ">添加</a>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <td width="5%" class="text-center">序号</td>
+                    <td width="10%" class="text-center">列名</td>
+                    <td width="5%" class="text-center">类型</td>
+                    <td width="5%" class="text-center">长度</td>
+                    <td width="5%" class="text-center">主键</td>
+                    <td width="10%" class="text-center">业务主键</td>
+                    <td width="10%" class="text-center">属性名称</td>
+                    <td width="25%" class="text-center">说明</td>
+                    <td width="3%" class="text-center" title="创建=查询条件">=</td>
+                    <td width="3%" class="text-center" title="创建like查询条件">%</td>
+                    <td width="3%" class="text-center" title="创建left like查询条件">X%</td>
+                    <td width="3%" class="text-center" title="创建in查询条件">in</td>
+                    <td width="3%" class="text-center" title="创建<>查询条件">&lt;&gt;</td>
+                    <td width="10%" class="text-center">操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="column,iterStat : ${table.columnList}">
+                    <td th:text="${iterStat.count}" class="text-center">1</td>
+                    <td th:text="${column.columnName}"></td>
+                    <td th:text="${column.columnType}"></td>
+                    <td th:text="${column.columnLength}"></td>
+                    <td th:text="${column.primaryKeyFlag}"></td>
+                    <td th:text="${column.logicKeyFlag}"></td>
+                    <td th:text="${column.propertyName}"></td>
+                    <td th:text="${column.columnComment}"></td>
+                    <td th:text="${column.createEqualFlag}"></td>
+                    <td th:text="${column.createLikeFlag}"></td>
+                    <td th:text="${column.createLeftLikeFlag}"></td>
+                    <td th:text="${column.createInFlag}"></td>
+                    <td th:text="${column.createCompareFlag}"></td>
+                    <td class="text-center">
+                        <a th:href="@{'/web/conf/version/' + ${table.versionId} + '/table/' + ${table.id}  + '/column/update/' + ${column.id} + '/to'}">修改</a>
+                        &nbsp;
+                        <a th:href="@{'/web/conf/version/' + ${table.versionId} + '/table/' + ${table.id}  + '/column/delete/' + ${column.id} }">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <hr/>
+    <div class="row panel panel-default">
+        <div class="panel-heading">索引列表</div>
+        <div class="panel-body">
+            <div class="text-right">
+                <a th:href="@{'/web/conf/version/' + ${table.versionId} + '/table/' + ${table.id} +'/index/add/to'}">添加</a>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <td class="text-center" width="7%">序号</td>
+                    <td class="text-center" width="45%">索引名</td>
+                    <td class="text-center" width="40">索引字段</td>
+                    <td class="text-center" width="8%">操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="idx,iterStat : ${table.indexList}">
+                    <td th:text="${iterStat.count}" class="text-center"></td>
+                    <td th:text="${idx.indexName}"></td>
+                    <td th:text="${idx.columnNames}"></td>
+                    <td class="text-center">
+                        <a th:href="@{'/web/conf/version/' + ${table.versionId} + '/table/' + ${table.id} + '/index/delete/' + ${idx.id}}">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row panel panel-default">
+        <div class="panel-heading">代码生成</div>
+        <div class="panel-body">
+            <div class="col-sm-12 form-group">
+                <button class="form-control">
+                    <a th:href="@{'/web/cg/version/' + ${versionId} + '/table/' + ${table.id} + '/all'}">生成本表对应的所有文件</a>
+                </button>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <td class="text-center" width="5%">序号</td>
+                    <td class="text-center" width="10%">项目</td>
+                    <td class="text-center" width="65%">文件地址</td>
+                    <td class="text-center" width="10%">覆盖原文件</td>
+                    <td class="text-center" width="10%">操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="tableFileInfo,iterStat : ${tableFileInfoList}">
+                    <td th:text="${iterStat.count}" class="text-center"></td>
+                    <td th:text="${tableFileInfo.type}"></td>
+                    <td th:text="${tableFileInfo.filePath}"></td>
+                    <td class="text-center" th:text="${tableFileInfo.replace}"></td>
+                    <td class="text-center">
+                            <a th:href="@{'/web/cg/version/' + ${versionId} + '/table/' + ${table.id} + '/type/' + ${tableFileInfo.type}}">创建</a>
+                            <span>&nbsp;&nbsp;</span>
+                            <a th:href="@{'/web/conf/version/' + ${versionId} + '/table/' + ${table.id} + '/preview/' + ${tableFileInfo.type}}">预览</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+<div th:replace="fragments/footer :: copy"></div>
+</div>
+
+</body>
+</html>

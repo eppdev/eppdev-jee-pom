@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head(~{:: title})">
+    <title>数据库列表</title>
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css"/>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: navbar">navbar</nav>
+<div class="container">
+    <div th:insert="fragments/alert :: alert">alert</div>
+    <h3 class="text-center">数据库列表&lt;<span th:text="${version.versionName}">versionName</span>&gt;</h3>
+    <div>
+        <div class="text-right">
+            <a th:href="@{'/web/conf/version/' + ${version.id} + '/table/add/to'}">
+                <button class="btn-sm btn-link">
+                <span class="glyphicon glyphicon-plus-sign">增加表
+                </span>
+                </button>
+            </a>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <td class="text-center" width="5%">序号</td>
+                <td class="text-center" width="20%">表名</td>
+                <td class="text-center" width="10%">所在模块</td>
+                <td class="text-center" width="20%">实体名</td>
+                <td class="text-center" width="30%">表注释</td>
+                <td class="text-center" width="15%">操作</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="table,iterStat : ${version.tableList}">
+                <td class="text-center" th:text="${iterStat.count}">1</td>
+                <td>
+                    <a th:href="@{'/web/conf/version/' + ${version.id} + '/table/view/' + ${table.id}}"
+                       th:text="${table.tableName}">table_name</a>
+                </td>
+                <td class="text-center" th:text="${table.moduleName}">module_name</td>
+                <td th:text="${table.entityName}">entity_name</td>
+                <td class="text-left" th:text="${table.tableComment}">table_comment</td>
+                <td class="text-center">
+                    <a th:href="@{'/web/cg/version/' + table.versionId + '/table/' + ${table.id} + '/all' }">代码生成</a>
+                    <a th:href="@{'/web/conf/version/' + ${version.id} + '/table/update/' + ${table.id} + '/to'}">修改</a>
+                    <a th:href="@{'/web/conf/version/' + ${version.id} + '/table/delete/' + ${table.id} }">删除</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:replace="fragments/footer :: copy"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.eppdev.jee.conf.dao.EppdevIndexDao">
+
+    <!-- 此段代码将在_EppdevIndexDao.xml中引用，请根据需要添加，切勿删除 -->
+    <sql id="customRefColumns">
+        b.id as "table.id",
+        b.table_name as "table.tableName",
+        b.table_comment as "table.tableComment",
+        b.module_name as "table.moduleName",
+        b.entity_name as "table.entityName",
+        b.table_type as "table.tableType",
+        b.version_id as "table.versionId",
+        b.create_sql as "table.createSql",
+        b.origin_table_id as "table.originTableId",
+        b.remarks as "table.remarks",
+        b.create_by as "table.createBy",
+        b.update_by as "table.updateBy",
+        b.create_date as "table.createDate",
+        b.update_date as "table.updateDate",
+        b.del_flag as "table.delFlag",
+    </sql>
+
+    <!-- 此段代码将在_EppdevIndexDao.xml中引用，请根据需要添加，切勿删除 -->
+    <sql id="customRefJoin">
+        left join _eppdev_table b on a.table_id=b.id
+    </sql>
+
+
+</mapper>

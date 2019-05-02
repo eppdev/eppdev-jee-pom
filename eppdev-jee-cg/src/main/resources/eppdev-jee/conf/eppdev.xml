@@ -1,0 +1,282 @@
+<eppdev>
+    <initFileList>
+
+        <initFileType typeId="conf" typeName="基础配置" />
+        <initFileType typeId="basic" typeName="基础类" />
+        <initFileType typeId="utils" typeName="工具类" />
+
+        <!-- init.conf -->
+        <initFile fileName="pom.xml" type="conf">
+            <filePathTemplate>
+                <![CDATA[${PROJECT_PATH}/pom.xml]]>
+            </filePathTemplate>
+            <contentTemplatePath>
+                <![CDATA[/eppdev-jee/template/conf/pom.xml.ftl]]>
+            </contentTemplatePath>
+            <fileInfo>
+                <![CDATA[maven工程的pom文件, 多模块方式需调整]]>
+            </fileInfo>
+        </initFile>
+        <initFile fileName="application.properties" type="conf">
+            <filePathTemplate>
+                <![CDATA[${PROJECT_PATH}/src/main/resources/application.properties]]>
+            </filePathTemplate>
+            <contentTemplatePath>
+                <![CDATA[/eppdev-jee/template/conf/application.properties.ftl]]>
+            </contentTemplatePath>
+            <fileInfo>
+                <![CDATA[springboot的配置文件，多模块方式需复制到相应目录中]]>
+            </fileInfo>
+        </initFile>
+        <initFile fileName="Application.java" type="conf">
+            <filePathTemplate>
+                <![CDATA[${PROJECT_PATH}/src/main/java/${BASIC_PACKAGE_NAME?replace('.','/')}/Application.java]]>
+            </filePathTemplate>
+            <contentTemplatePath>
+                <![CDATA[/eppdev-jee/template/conf/Application.java.ftl]]>
+            </contentTemplatePath>
+            <fileInfo>
+                <![CDATA[springboot的启动文件，多模块方式需调整]]>
+            </fileInfo>
+        </initFile>
+        <initFile fileName=".gitignore" type="conf">
+            <filePathTemplate>
+                <![CDATA[${GIT_PATH}/.gitignore]]>
+            </filePathTemplate>
+            <contentTemplatePath>
+                <![CDATA[/eppdev-jee/template/conf/gitignore.ftl]]>
+            </contentTemplatePath>
+            <fileInfo>
+                <![CDATA[Git初始化文件，用于确保IDE相关文件不上传]]>
+            </fileInfo>
+        </initFile>
+
+
+        <!-- init.basic -->
+        <initFile fileName="BasicDao.java" type="basic">
+            <filePathTemplate>
+                <![CDATA[${PROJECT_PATH}/src/main/java/${BASIC_PACKAGE_NAME?replace('.','/')}/commons/dao/BasicDao.java]]>
+            </filePathTemplate>
+            <contentTemplatePath>
+                <![CDATA[/eppdev-jee/template/dao/basic_dao.ftl]]>
+            </contentTemplatePath>
+            <fileInfo>
+                <![CDATA[生成本工程Dao类的父类]]>
+            </fileInfo>
+        </initFile>
+        <initFile fileName="BasicEntity.java" type="basic">
+            <filePathTemplate>
+                <![CDATA[${PROJECT_PATH}/src/main/java/${BASIC_PACKAGE_NAME?replace('.','/')}/commons/entity/BasicEntity.java]]>
+            </filePathTemplate>
+            <contentTemplatePath>
+                <![CDATA[/eppdev-jee/template/entity/basic_entity.ftl]]>
+            </contentTemplatePath>
+            <fileInfo>
+                <![CDATA[生成本工程Entity类的父类]]>
+            </fileInfo>
+        </initFile>
+        <initFile fileName="BasicService.java" type="basic">
+            <filePathTemplate>
+                <![CDATA[${PROJECT_PATH}/src/main/java/${BASIC_PACKAGE_NAME?replace('.','/')}/commons/service/BasicService.java]]>
+            </filePathTemplate>
+            <contentTemplatePath>
+                <![CDATA[/eppdev-jee/template/service/basic_service.ftl]]>
+            </contentTemplatePath>
+            <fileInfo>
+                <![CDATA[生成本工程Service类的父类]]>
+            </fileInfo>
+        </initFile>
+        <initFile fileName="BasicParam.java" type="basic">
+            <filePathTemplate>
+                <![CDATA[${PROJECT_PATH}/src/main/java/${BASIC_PACKAGE_NAME?replace('.','/')}/commons/param/BasicParam.java]]>
+            </filePathTemplate>
+            <contentTemplatePath>
+                <![CDATA[/eppdev-jee/template/param/basic_param.ftl]]>
+            </contentTemplatePath>
+            <fileInfo>
+                <![CDATA[生成本工程Param类的父类]]>
+            </fileInfo>
+        </initFile>
+        <initFile fileName="BasicController" type="basic">
+            <filePathTemplate>
+                <![CDATA[${PROJECT_PATH}/src/main/java/${BASIC_PACKAGE_NAME?replace('.','/')}/commons/rest/BasicController.java]]>
+            </filePathTemplate>
+            <contentTemplatePath>
+                <![CDATA[/eppdev-jee/template/rest/basic_controller.ftl]]>
+            </contentTemplatePath>
+            <fileInfo>
+                <![CDATA[生成本工程Controller的父类]]>
+            </fileInfo>
+        </initFile>
+        <initFile fileName="RestResult.java" type="basic">
+            <filePathTemplate>
+                <![CDATA[${PROJECT_PATH}/src/main/java/${BASIC_PACKAGE_NAME?replace('.','/')}/commons/entity/RestResult.java]]>
+            </filePathTemplate>
+            <contentTemplatePath>
+                <![CDATA[/eppdev-jee/template/entity/rest_result.ftl]]>
+            </contentTemplatePath>
+            <fileInfo>
+                <![CDATA[生成RestResult基础类]]>
+            </fileInfo>
+        </initFile>
+        <initFile fileName="SysService" type="basic">
+            <filePathTemplate>
+                <![CDATA[${PROJECT_PATH}/src/main/java/${BASIC_PACKAGE_NAME?replace('.','/')}/commons/service/SysService.java]]>
+            </filePathTemplate>
+            <contentTemplatePath>
+                <![CDATA[/eppdev-jee/template/service/sys_service.ftl]]>
+            </contentTemplatePath>
+            <fileInfo>
+                <![CDATA[生成SysService基础类，主要用于获取userId]]>
+            </fileInfo>
+        </initFile>
+
+
+        <!-- init.utils -->
+        <initFile fileName="JSONUtils.java" type="utils">
+            <filePathTemplate>
+                <![CDATA[${PROJECT_PATH}/src/main/java/${BASIC_PACKAGE_NAME?replace('.','/')}/utils/JSONUtils.java]]>
+            </filePathTemplate>
+            <contentTemplatePath>
+                <![CDATA[/eppdev-jee/template/utils/json_utils.ftl]]>
+            </contentTemplatePath>
+            <fileInfo>
+                <![CDATA[生成JSONUtils工具类，用于JavaBean到json的相互转换]]>
+            </fileInfo>
+        </initFile>
+        <initFile fileName="StringUtils.java" type="utils">
+            <filePathTemplate>
+                <![CDATA[${PROJECT_PATH}/src/main/java/${BASIC_PACKAGE_NAME?replace('.','/')}/utils/StringUtils.java]]>
+            </filePathTemplate>
+            <contentTemplatePath>
+                <![CDATA[/eppdev-jee/template/utils/string_utils.ftl]]>
+            </contentTemplatePath>
+            <fileInfo>
+                <![CDATA[字符串处理的工具类，主要用于字符串的转化处理]]>
+            </fileInfo>
+        </initFile>
+        <initFile fileName="RandomUtils.java" type="utils">
+            <filePathTemplate>
+                <![CDATA[${PROJECT_PATH}/src/main/java/${BASIC_PACKAGE_NAME?replace('.','/')}/utils/RandomUtils.java]]>
+            </filePathTemplate>
+            <contentTemplatePath>
+                <![CDATA[/eppdev-jee/template/utils/random_utils.ftl]]>
+            </contentTemplatePath>
+            <fileInfo>
+                <![CDATA[随机码生成的工具类]]>
+            </fileInfo>
+        </initFile>
+        <initFile fileName="PasswordUtils.java" type="utils">
+            <filePathTemplate>
+                <![CDATA[${PROJECT_PATH}/src/main/java/${BASIC_PACKAGE_NAME?replace('.','/')}/utils/PasswordUtils.java]]>
+            </filePathTemplate>
+            <contentTemplatePath>
+                <![CDATA[/eppdev-jee/template/utils/password_utils.ftl]]>
+            </contentTemplatePath>
+            <fileInfo>
+                <![CDATA[密码相关的工具类，用于实现密码哈希加盐和密码的有如题等]]>
+            </fileInfo>
+        </initFile>
+    </initFileList>
+
+    <tableFileList>
+        <tableFile type="upperEntity" replace="true">
+            <filePathTemplate>
+                <![CDATA[${basicConf.PROJECT_PATH}/src/main/java/${basicConf.BASIC_PACKAGE_NAME?replace('.','/')}<#if moduleName?exists && moduleName?trim?length &gt; 0>/${moduleName}</#if>/entity/auto/_${entityName}.java]]>
+            </filePathTemplate>
+            <contentTemplatePath dbType="default" >
+                <![CDATA[/eppdev-jee/template/entity/upper_entity.ftl]]>
+            </contentTemplatePath>
+        </tableFile>
+        <tableFile type="entity" replace="false">
+            <filePathTemplate>
+                <![CDATA[${basicConf.PROJECT_PATH}/src/main/java/${basicConf.BASIC_PACKAGE_NAME?replace('.','/')}<#if moduleName?exists && moduleName?trim?length &gt; 0>/${moduleName}</#if>/entity/${entityName}.java]]>
+            </filePathTemplate>
+            <contentTemplatePath dbType="default" >
+                <![CDATA[/eppdev-jee/template/entity/entity.ftl]]>
+            </contentTemplatePath>
+        </tableFile>
+        <tableFile type="upperDao" replace="true">
+            <filePathTemplate>
+                <![CDATA[${basicConf.PROJECT_PATH}/src/main/java/${basicConf.BASIC_PACKAGE_NAME?replace('.','/')}<#if moduleName?exists && moduleName?trim?length &gt; 0>/${moduleName}</#if>/dao/auto/_${entityName}Dao.java]]>
+            </filePathTemplate>
+            <contentTemplatePath dbType="default" >
+                <![CDATA[/eppdev-jee/template/dao/upper_dao.ftl]]>
+            </contentTemplatePath>
+        </tableFile>
+        <tableFile type="dao" replace="false">
+            <filePathTemplate>
+                <![CDATA[${basicConf.PROJECT_PATH}/src/main/java/${basicConf.BASIC_PACKAGE_NAME?replace('.','/')}<#if moduleName?exists && moduleName?trim?length &gt; 0>/${moduleName}</#if>/dao/${entityName}Dao.java]]>
+            </filePathTemplate>
+            <contentTemplatePath dbType="default" >
+                <![CDATA[/eppdev-jee/template/dao/dao.ftl]]>
+            </contentTemplatePath>
+        </tableFile>
+        <tableFile type="upperMapperXml" replace="true">
+            <filePathTemplate>
+                <![CDATA[${basicConf.PROJECT_PATH}/src/main/resources/${basicConf.BASIC_PACKAGE_NAME?replace('.','/')}<#if moduleName?exists && moduleName?trim?length &gt; 0>/${moduleName}</#if>/dao/auto/_${entityName}Dao.xml]]>
+            </filePathTemplate>
+            <contentTemplatePath dbType="default" >
+                <![CDATA[/eppdev-jee/template/mapper/upper_mapper.ftl]]>
+            </contentTemplatePath>
+        </tableFile>
+        <tableFile type="mapperXml" replace="false">
+            <filePathTemplate>
+                <![CDATA[${basicConf.PROJECT_PATH}/src/main/resources/${basicConf.BASIC_PACKAGE_NAME?replace('.','/')}<#if moduleName?exists && moduleName?trim?length &gt; 0>/${moduleName}</#if>/dao/${entityName}Dao.xml]]>
+            </filePathTemplate>
+            <contentTemplatePath dbType="default" >
+                <![CDATA[/eppdev-jee/template/mapper/mapper.ftl]]>
+            </contentTemplatePath>
+        </tableFile>
+        <tableFile type="upperParam" replace="true">
+            <filePathTemplate>
+                <![CDATA[${basicConf.PROJECT_PATH}/src/main/java/${basicConf.BASIC_PACKAGE_NAME?replace('.','/')}<#if moduleName?exists && moduleName?trim?length &gt; 0>/${moduleName}</#if>/param/auto/_${entityName}Param.java]]>
+            </filePathTemplate>
+            <contentTemplatePath dbType="default" >
+                <![CDATA[/eppdev-jee/template/param/upper_param.ftl]]>
+            </contentTemplatePath>
+        </tableFile>
+        <tableFile type="param" replace="false">
+            <filePathTemplate>
+                <![CDATA[${basicConf.PROJECT_PATH}/src/main/java/${basicConf.BASIC_PACKAGE_NAME?replace('.','/')}<#if moduleName?exists && moduleName?trim?length &gt; 0>/${moduleName}</#if>/param/${entityName}Param.java]]>
+            </filePathTemplate>
+            <contentTemplatePath dbType="default" >
+                <![CDATA[/eppdev-jee/template/param/param.ftl]]>
+            </contentTemplatePath>
+        </tableFile>
+        <tableFile type="upperService" replace="true">
+            <filePathTemplate>
+                <![CDATA[${basicConf.PROJECT_PATH}/src/main/java/${basicConf.BASIC_PACKAGE_NAME?replace('.','/')}<#if moduleName?exists && moduleName?trim?length &gt; 0>/${moduleName}</#if>/service/auto/_${entityName}Service.java]]>
+            </filePathTemplate>
+            <contentTemplatePath dbType="default" >
+                <![CDATA[/eppdev-jee/template/service/upper_service.ftl]]>
+            </contentTemplatePath>
+        </tableFile>
+        <tableFile type="service" replace="false">
+            <filePathTemplate>
+                <![CDATA[${basicConf.PROJECT_PATH}/src/main/java/${basicConf.BASIC_PACKAGE_NAME?replace('.','/')}<#if moduleName?exists && moduleName?trim?length &gt; 0>/${moduleName}</#if>/service/${entityName}Service.java]]>
+            </filePathTemplate>
+            <contentTemplatePath dbType="default" >
+                <![CDATA[/eppdev-jee/template/service/service.ftl]]>
+            </contentTemplatePath>
+        </tableFile>
+        <tableFile type="controller" replace="false">
+            <filePathTemplate>
+                <![CDATA[${basicConf.PROJECT_PATH}/src/main/java/${basicConf.BASIC_PACKAGE_NAME?replace('.','/')}<#if moduleName?exists && moduleName?trim?length &gt; 0>/${moduleName}</#if>/rest/${entityName}Controller.java]]>
+            </filePathTemplate>
+            <contentTemplatePath dbType="default" >
+                <![CDATA[/eppdev-jee/template/rest/controller.ftl]]>
+            </contentTemplatePath>
+        </tableFile>
+        <tableFile type="schema" replace="true">
+            <filePathTemplate>
+                <![CDATA[${basicConf.PROJECT_PATH}/sql/${version.versionName}/schema/${tableName}.sql]]>
+            </filePathTemplate>
+            <contentTemplatePath dbType="default" >
+                <![CDATA[/eppdev-jee/template/sql/schema.ftl]]>
+            </contentTemplatePath>
+        </tableFile>
+
+    </tableFileList>
+
+</eppdev>

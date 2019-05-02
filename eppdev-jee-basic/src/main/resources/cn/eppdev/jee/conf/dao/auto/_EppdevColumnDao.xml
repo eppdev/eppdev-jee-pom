@@ -1,0 +1,202 @@
+<!--
+     _eppdev_column对应的基础Mapper文件，请勿修改，代码生成时会自动进行覆盖
+     由EPPDEV-JEE自动创建
+-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.eppdev.jee.conf.dao.auto._EppdevColumnDao">
+    <sql id="columns">
+        a.id as id,
+        a.table_id as tableId,
+        a.column_name as columnName,
+        a.column_type as columnType,
+        a.column_length as columnLength,
+        a.sort_index as sortIndex,
+        a.primary_key_flag as primaryKeyFlag,
+        a.logic_key_flag as logicKeyFlag,
+        a.column_comment as columnComment,
+        a.property_name as propertyName,
+        a.java_type as javaType,
+        a.origin_column_id as originColumnId,
+        a.create_equal_flag as createEqualFlag,
+        a.create_like_flag as createLikeFlag,
+        a.create_left_like_flag as createLeftLikeFlag,
+        a.create_in_flag as createInFlag,
+        a.create_compare_flag as createCompareFlag,
+        a.remarks as remarks,
+        a.create_date as createDate,
+        a.create_by as createBy,
+        a.update_date as updateDate,
+        a.update_by as updateBy,
+        a.del_flag as delFlag,
+    </sql>
+
+    <insert id="insert" parameterType="cn.eppdev.jee.conf.entity.EppdevColumn">
+        insert into _eppdev_column(
+        <trim suffixOverrides=",">
+            id,
+            table_id,
+            column_name,
+            column_type,
+            column_length,
+            sort_index,
+            primary_key_flag,
+            logic_key_flag,
+            column_comment,
+            property_name,
+            java_type,
+            origin_column_id,
+            create_equal_flag,
+            create_like_flag,
+            create_left_like_flag,
+            create_in_flag,
+            create_compare_flag,
+            remarks,
+            create_date,
+            create_by,
+            update_date,
+            update_by,
+            del_flag,
+        </trim>
+        )
+        values(
+        <trim suffixOverrides=",">
+            #{id},
+            #{tableId},
+            #{columnName},
+            #{columnType},
+            #{columnLength},
+            #{sortIndex},
+            #{primaryKeyFlag},
+            #{logicKeyFlag},
+            #{columnComment},
+            #{propertyName},
+            #{javaType},
+            #{originColumnId},
+            #{createEqualFlag},
+            #{createLikeFlag},
+            #{createLeftLikeFlag},
+            #{createInFlag},
+            #{createCompareFlag},
+            #{remarks},
+            #{createDate},
+            #{createBy},
+            #{updateDate},
+            #{updateBy},
+            #{delFlag},
+        </trim>
+        )
+    </insert>
+
+    <delete id="delete">
+        update _eppdev_column a
+        <set>
+            a.del_flag=1,
+            <if test="updateDate != null">a.update_date=#{updateDate}, </if>
+            <if test="updateBy != null and updateBy != ''">a.update_by = #{updateBy}, </if>
+        </set>
+        <where>
+            and a.id=#{id}
+                and a.del_flag = 0
+        </where>
+    </delete>
+
+    <delete id="deleteBy" parameterType="cn.eppdev.jee.conf.param.EppdevColumnParam">
+        update _eppdev_column a
+        <set>
+            a.del_flag=1,
+            <if test="updateDate != null">a.update_date=#{updateDate}, </if>
+            <if test="updateBy != null and updateBy != ''">a.update_by = #{updateBy}, </if>
+        </set>
+        <where>
+            <if test="id != null and id != ''">and a.id=#{id}</if>
+            <if test="tableId != null and tableId != ''">and a.table_id=#{tableId}</if>
+            <if test="delFlag != null">and a.del_flag=#{delFlag}</if>
+                and a.del_flag = 0
+        </where>
+    </delete>
+
+    <update id="update" parameterType="cn.eppdev.jee.conf.entity.EppdevColumn">
+        update _eppdev_column a
+        <set>
+            <if test="id != null and id != ''">a.id = #{id},</if>
+            <if test="tableId != null and tableId != ''">a.table_id = #{tableId},</if>
+            <if test="columnName != null and columnName != ''">a.column_name = #{columnName},</if>
+            <if test="columnType != null and columnType != ''">a.column_type = #{columnType},</if>
+            <if test="columnLength != null">a.column_length = #{columnLength},</if>
+            <if test="sortIndex != null">a.sort_index = #{sortIndex},</if>
+            <if test="primaryKeyFlag != null">a.primary_key_flag = #{primaryKeyFlag},</if>
+            <if test="logicKeyFlag != null">a.logic_key_flag = #{logicKeyFlag},</if>
+            <if test="columnComment != null and columnComment != ''">a.column_comment = #{columnComment},</if>
+            <if test="propertyName != null and propertyName != ''">a.property_name = #{propertyName},</if>
+            <if test="javaType != null and javaType != ''">a.java_type = #{javaType},</if>
+            <if test="originColumnId != null and originColumnId != ''">a.origin_column_id = #{originColumnId},</if>
+            <if test="createEqualFlag != null">a.create_equal_flag = #{createEqualFlag},</if>
+            <if test="createLikeFlag != null">a.create_like_flag = #{createLikeFlag},</if>
+            <if test="createLeftLikeFlag != null">a.create_left_like_flag = #{createLeftLikeFlag},</if>
+            <if test="createInFlag != null">a.create_in_flag = #{createInFlag},</if>
+            <if test="createCompareFlag != null">a.create_compare_flag = #{createCompareFlag},</if>
+            <if test="remarks != null and remarks != ''">a.remarks = #{remarks},</if>
+            <if test="createDate != null">a.create_date = #{createDate},</if>
+            <if test="createBy != null and createBy != ''">a.create_by = #{createBy},</if>
+            <if test="updateDate != null">a.update_date = #{updateDate},</if>
+            <if test="updateBy != null and updateBy != ''">a.update_by = #{updateBy},</if>
+            <if test="delFlag != null">a.del_flag = #{delFlag},</if>
+        </set>
+        <where>
+        and a.id=#{id}
+        </where>
+    </update>
+
+
+    <select id="get" resultType="cn.eppdev.jee.conf.entity.EppdevColumn">
+        select
+        <trim suffixOverrides=",">
+            <include refid="columns"/>
+            <include refid="cn.eppdev.jee.conf.dao.EppdevColumnDao.customRefColumns"/>
+        </trim>
+        from _eppdev_column a
+        <include refid="cn.eppdev.jee.conf.dao.EppdevColumnDao.customRefJoin"/>
+        <where>
+            and a.id=#{id}
+        </where>
+    </select>
+
+
+    <select id="list" resultType="cn.eppdev.jee.conf.entity.EppdevColumn">
+        select
+        <trim suffixOverrides=",">
+            <include refid="columns"/>
+            <include refid="cn.eppdev.jee.conf.dao.EppdevColumnDao.customRefColumns"/>
+        </trim>
+        from _eppdev_column a
+        <include refid="cn.eppdev.jee.conf.dao.EppdevColumnDao.customRefJoin"/>
+        <where>
+            <if test="id != null and id != ''">and a.id=#{id}</if>
+            <if test="tableId != null and tableId != ''">and a.table_id=#{tableId}</if>
+            <if test="columnName != null and columnName != ''">and a.column_name=#{columnName}</if>
+            <if test="delFlag != null">and a.del_flag=#{delFlag}</if>
+                and a.del_flag = 0
+            <if test="_customWhere != null and _customWhere != ''">${_customWhere}</if>
+        </where>
+        <choose>
+            <when test="_orderBy != null and _orderBy != ''">
+                order by ${_orderBy}
+            </when>
+            <otherwise>
+                order by a.update_date desc
+            </otherwise>
+        </choose>
+    </select>
+
+
+
+    <delete id="realDelete">
+        delete from _eppdev_column a
+        <where>
+            and a.id=#{id}
+        </where>
+    </delete>
+
+</mapper>

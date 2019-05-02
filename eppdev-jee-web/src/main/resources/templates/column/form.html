@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head(~{:: title})">
+    <title th:if="${column} == null">添加字段</title>
+    <title th:if="${column} != null">修改字段</title>
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css"/>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: navbar">navbar</nav>
+<div class="container">
+    <div th:insert="fragments/alert :: alert">alert</div>
+    <div class="text-left">
+        <a th:href="@{'/web/conf/version/' + ${versionId} + '/table/view/' + ${column.tableId} }">返回</a>
+    </div>
+    <h3 class="text-center" th:if="${column} and ${column.id}">修改字段</h3>
+    <h3 class="text-center" th:if="${column} == null or ${column.id}==null">添加字段</h3>
+    <br/>
+    <div class="row">
+        <form action="do" class="form-horizontal" role="form">
+            <input type="hidden" name="tableId" th:value="${column.tableId}"/>
+            <input type="hidden" name="id" th:value="${column.id}"/>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="columnName">字段名：</label>
+                <div class="col-sm-9">
+                    <input id="columnName" type="text" name="columnName"
+                           th:value="${column} ? ${column.columnName} : ''"
+                           class="form-control input-sm"
+                           placeholder="请输入字段名"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="primaryKeyFlag">是否主键：</label>
+                <div class="col-sm-9">
+                    <select id="primaryKeyFlag" name="primaryKeyFlag" class="form-control">
+                        <option value="0">否</option>
+                        <option value="1"
+                                th:selected="${column.primaryKeyFlag}==1? 'selected'">是
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="logicKeyFlag">是否业务主键：</label>
+                <div class="col-sm-9">
+                    <select id="logicKeyFlag" name="logicKeyFlag" class="form-control">
+                        <option value="0">否</option>
+                        <option value="1"
+                                th:selected="${column.logicKeyFlag}==1? 'selected'">是
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="columnType">字段类型：</label>
+                <div class="col-sm-9">
+                    <select id="columnType" name="columnType" class="form-control">
+                        <option th:each="type : ${columnTypeList}"
+                                th:text="${type.columnType}"
+                                th:value="${type.columnType}"
+                                th:selected="${type.columnType == column.columnType}? 'selected'">int
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="columnLength">字段长度：</label>
+                <div class="col-sm-9">
+                    <input id="columnLength" type="text" name="columnLength"
+                           th:value="${column} ? ${column.columnLength} : ''"
+                           class="form-control input-sm"
+                           placeholder="请输入整数"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="columnComment">字段说明：</label>
+                <div class="col-sm-9">
+                    <input id="columnComment" type="text" name="columnComment"
+                           th:value="${column} ? ${column.columnComment} : ''"
+                           class="form-control input-sm"
+                           placeholder="字段说明"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="propertyName">实体名：</label>
+                <div class="col-sm-9">
+                    <input id="propertyName" type="text" name="propertyName"
+                           th:value="${column} ? ${column.propertyName} : ''"
+                           class="form-control input-sm"
+                           placeholder="不填采用默认规则自动创建"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="javaType">属性类：</label>
+                <div class="col-sm-9">
+                    <input id="javaType" type="text" name="javaType"
+                           th:value="${column} ? ${column.javaType} : ''"
+                           class="form-control input-sm"
+                           placeholder="不填采用默认规则自动创建"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="createEqualFlag">是否创建=条件：</label>
+                <div class="col-sm-9">
+                    <select id="createEqualFlag" name="createEqualFlag" class="form-control">
+                        <option value="0">否</option>
+                        <option value="1"
+                                th:selected="${column.createEqualFlag}==1? 'selected'">是
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="createLikeFlag">是否创建like条件：</label>
+                <div class="col-sm-9">
+                    <select id="createLikeFlag" name="createLikeFlag" class="form-control">
+                        <option value="0">否</option>
+                        <option value="1"
+                                th:selected="${column.createLikeFlag}==1? 'selected'">是
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="createLeftLikeFlag">是否创建left like条件：</label>
+                <div class="col-sm-9">
+                    <select id="createLeftLikeFlag" name="createLeftLikeFlag" class="form-control">
+                        <option value="0">否</option>
+                        <option value="1"
+                                th:selected="${column.createLeftLikeFlag}==1? 'selected'">是
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="createInFlag">是否创建in查询条件：</label>
+                <div class="col-sm-9">
+                    <select id="createInFlag" name="createInFlag" class="form-control">
+                        <option value="0">否</option>
+                        <option value="1"
+                                th:selected="${column.createInFlag}==1? 'selected'">是
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="createCompareFlag">是否创建大于小于条件：</label>
+                <div class="col-sm-9">
+                    <select id="createCompareFlag" name="createCompareFlag" class="form-control">
+                        <option value="0">否</option>
+                        <option value="1"
+                                th:selected="${column.createCompareFlag}==1? 'selected'">是
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="sortIndex">列排序：</label>
+                <div class="col-sm-9">
+                    <input id="sortIndex" type="text" name="sortIndex"
+                           th:value="${column} ? ${column.sortIndex} : ''"
+                           class="form-control input-sm"
+                           placeholder="字段排序"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2">备注：</label>
+                <div class="col-sm-9">
+                <textarea id="remarks" name="remark" rows="5"
+                          th:text="${column}? ${column.remarks} : ''"
+                          class="form-control">
+                </textarea>
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <input type="submit" value="提交"/>
+            </div>
+        </form>
+    </div>
+    <br/>
+    <br/>
+    <div th:replace="fragments/footer :: copy"></div>
+</div>
+
+</body>
+</html>

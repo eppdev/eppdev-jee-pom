@@ -1,0 +1,170 @@
+<!--
+     _eppdev_table对应的基础Mapper文件，请勿修改，代码生成时会自动进行覆盖
+     由EPPDEV-JEE自动创建
+-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.eppdev.jee.conf.dao.auto._EppdevTableDao">
+    <sql id="columns">
+        a.id as id,
+        a.table_name as tableName,
+        a.table_comment as tableComment,
+        a.module_name as moduleName,
+        a.entity_name as entityName,
+        a.table_type as tableType,
+        a.version_id as versionId,
+        a.create_sql as createSql,
+        a.origin_table_id as originTableId,
+        a.remarks as remarks,
+        a.create_date as createDate,
+        a.create_by as createBy,
+        a.update_date as updateDate,
+        a.update_by as updateBy,
+        a.del_flag as delFlag,
+    </sql>
+
+    <insert id="insert" parameterType="cn.eppdev.jee.conf.entity.EppdevTable">
+        insert into _eppdev_table(
+        <trim suffixOverrides=",">
+            id,
+            table_name,
+            table_comment,
+            module_name,
+            entity_name,
+            table_type,
+            version_id,
+            create_sql,
+            origin_table_id,
+            remarks,
+            create_date,
+            create_by,
+            update_date,
+            update_by,
+            del_flag,
+        </trim>
+        )
+        values(
+        <trim suffixOverrides=",">
+            #{id},
+            #{tableName},
+            #{tableComment},
+            #{moduleName},
+            #{entityName},
+            #{tableType},
+            #{versionId},
+            #{createSql},
+            #{originTableId},
+            #{remarks},
+            #{createDate},
+            #{createBy},
+            #{updateDate},
+            #{updateBy},
+            #{delFlag},
+        </trim>
+        )
+    </insert>
+
+    <delete id="delete">
+        update _eppdev_table a
+        <set>
+            a.del_flag=1,
+            <if test="updateDate != null">a.update_date=#{updateDate}, </if>
+            <if test="updateBy != null and updateBy != ''">a.update_by = #{updateBy}, </if>
+        </set>
+        <where>
+            and a.id=#{id}
+                and a.del_flag = 0
+        </where>
+    </delete>
+
+    <delete id="deleteBy" parameterType="cn.eppdev.jee.conf.param.EppdevTableParam">
+        update _eppdev_table a
+        <set>
+            a.del_flag=1,
+            <if test="updateDate != null">a.update_date=#{updateDate}, </if>
+            <if test="updateBy != null and updateBy != ''">a.update_by = #{updateBy}, </if>
+        </set>
+        <where>
+            <if test="id != null and id != ''">and a.id=#{id}</if>
+            <if test="versionId != null and versionId != ''">and a.version_id=#{versionId}</if>
+            <if test="delFlag != null">and a.del_flag=#{delFlag}</if>
+                and a.del_flag = 0
+        </where>
+    </delete>
+
+    <update id="update" parameterType="cn.eppdev.jee.conf.entity.EppdevTable">
+        update _eppdev_table a
+        <set>
+            <if test="id != null and id != ''">a.id = #{id},</if>
+            <if test="tableName != null and tableName != ''">a.table_name = #{tableName},</if>
+            <if test="tableComment != null and tableComment != ''">a.table_comment = #{tableComment},</if>
+            <if test="moduleName != null and moduleName != ''">a.module_name = #{moduleName},</if>
+            <if test="entityName != null and entityName != ''">a.entity_name = #{entityName},</if>
+            <if test="tableType != null">a.table_type = #{tableType},</if>
+            <if test="versionId != null and versionId != ''">a.version_id = #{versionId},</if>
+            <if test="createSql != null and createSql != ''">a.create_sql = #{createSql},</if>
+            <if test="originTableId != null and originTableId != ''">a.origin_table_id = #{originTableId},</if>
+            <if test="remarks != null and remarks != ''">a.remarks = #{remarks},</if>
+            <if test="createDate != null">a.create_date = #{createDate},</if>
+            <if test="createBy != null and createBy != ''">a.create_by = #{createBy},</if>
+            <if test="updateDate != null">a.update_date = #{updateDate},</if>
+            <if test="updateBy != null and updateBy != ''">a.update_by = #{updateBy},</if>
+            <if test="delFlag != null">a.del_flag = #{delFlag},</if>
+        </set>
+        <where>
+        and a.id=#{id}
+        </where>
+    </update>
+
+
+    <select id="get" resultType="cn.eppdev.jee.conf.entity.EppdevTable">
+        select
+        <trim suffixOverrides=",">
+            <include refid="columns"/>
+            <include refid="cn.eppdev.jee.conf.dao.EppdevTableDao.customRefColumns"/>
+        </trim>
+        from _eppdev_table a
+        <include refid="cn.eppdev.jee.conf.dao.EppdevTableDao.customRefJoin"/>
+        <where>
+            and a.id=#{id}
+        </where>
+    </select>
+
+
+    <select id="list" resultType="cn.eppdev.jee.conf.entity.EppdevTable">
+        select
+        <trim suffixOverrides=",">
+            <include refid="columns"/>
+            <include refid="cn.eppdev.jee.conf.dao.EppdevTableDao.customRefColumns"/>
+        </trim>
+        from _eppdev_table a
+        <include refid="cn.eppdev.jee.conf.dao.EppdevTableDao.customRefJoin"/>
+        <where>
+            <if test="id != null and id != ''">and a.id=#{id}</if>
+            <if test="tableName != null and tableName != ''">and a.table_name=#{tableName}</if>
+            <if test="versionId != null and versionId != ''">and a.version_id=#{versionId}</if>
+            <if test="delFlag != null">and a.del_flag=#{delFlag}</if>
+                and a.del_flag = 0
+            <if test="_customWhere != null and _customWhere != ''">${_customWhere}</if>
+        </where>
+        <choose>
+            <when test="_orderBy != null and _orderBy != ''">
+                order by ${_orderBy}
+            </when>
+            <otherwise>
+                order by a.update_date desc
+            </otherwise>
+        </choose>
+    </select>
+
+
+
+    <delete id="realDelete">
+        delete from _eppdev_table a
+        <where>
+            and a.id=#{id}
+        </where>
+    </delete>
+
+</mapper>

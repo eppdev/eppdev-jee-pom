@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="alert alert-warning row" th:fragment="alert" th:if="${message}">
+    <a href="#" class="close" data-dismiss="alert">
+        &times;
+    </a>
+    <p th:text="${message}"></p>
+</div>
+
+</body>
+</html>

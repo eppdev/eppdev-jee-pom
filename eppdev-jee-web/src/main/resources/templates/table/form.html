@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head(~{:: title})">
+    <title th:if="${table} == null">创建表</title>
+    <title th:if="${eppdevTalbe} != null">更新表</title>
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css"/>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: navbar">navbar</nav>
+<div class="container">
+    <div th:insert="fragments/alert :: alert">alert</div>
+    <div class="text-left">
+        <a th:if="${table} != null" th:href="@{'/table/' + ${table.id} }">返回</a>
+        <a th:if="${table} == null" th:href=" @{'/web/conf/version/view/' + ${versionId}} ">返回</a>
+    </div>
+    <h3 class="text-center" th:if="${table} != null">修表信息</h3>
+    <h3 class="text-center" th:if="${table} == null">添加表</h3>
+    <br/>
+    <div class="row">
+        <form action="do" class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="tableName">表名：</label>
+                <div class="col-sm-9">
+                    <input type="hidden" name="versionId"
+                           th:value="${table}? ${table.versionId} : ${versionId}" />
+                    <input type="hidden" name="id" th:value="${table}? ${table.id} : ''" />
+                    <input id="tableName" type="text" name="tableName"
+                           th:value="${table} ? ${table.tableName} : ''"
+                           class="form-control input-sm"
+                           placeholder="请输入表名"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="tableComment">表说明：</label>
+                <div class="col-sm-9">
+                    <input id="tableComment" type="text" name="tableComment"
+                           th:value="${table} ? ${table.tableComment} : ''"
+                           class="form-control input-sm"
+                           placeholder="请输入所属模块"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="moduleName">模块名：</label>
+                <div class="col-sm-9">
+                    <input id="moduleName" type="text" name="moduleName"
+                           th:value="${table} ? ${table.moduleName} : ''"
+                           class="form-control input-sm"
+                           placeholder="请输入所属模块"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="entityName">实体名：</label>
+                <div class="col-sm-9">
+                    <input id="entityName" type="text" name="entityName"
+                           th:value="${table} ? ${table.entityName} : ''"
+                           class="form-control input-sm"
+                           placeholder="不填采用默认规则自动创建"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">备注：</label>
+                <div class="col-sm-9">
+                <textarea id="remarks" name="remark" rows="5"
+                          th:text="${table}? ${table.remarks} : ''"
+                          class="form-control">
+                </textarea>
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <input type="submit" value="提交" />
+            </div>
+        </form>
+    </div>
+    <br/>
+    <br/>
+    <div th:replace="fragments/footer :: copy"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css"/>
+</head>
+<body>
+<nav class="navbar navbar-default" th:fragment="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/}"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a></a>
+        </div>
+        <div class="navbar navbar-nav">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a th:href="@{/web/conf/basic/list}">初始配置</a>
+                </li>
+                <li>
+                    <a th:href="@{/web/conf/init/list}">工程初始化</a>
+                </li>
+                <li>
+                    <a th:href="@{/web/conf/version/view/00000000000000000000000000000000}">最新库表信息列表</a>
+                </li>
+                <li>
+                    <a th:href="@{/web/conf/version/list}">历史版本</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="navbar navbar-nav navbar-right">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="http://jee.eppdev.cn">
+                        <small>EPPDEV-JEE</small>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</body>
+</html>

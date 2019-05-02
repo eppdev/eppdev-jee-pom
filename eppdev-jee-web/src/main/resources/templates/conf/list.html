@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head(~{:: title})">
+    <title>版本记录</title>
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css"/>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: navbar">导航栏</nav>
+<div class="container">
+    <div th:insert="fragments/alert :: alert">alert</div>
+    <h3 class="text-center">配置管理</h3>
+    <div>
+        <table class="table table-bordered">
+            <thead class="text-center">
+            <tr>
+                <td width="5%">序号</td>
+                <td width="15%">配置项名称</td>
+                <td width="35%">配置值</td>
+                <td width="35%">说明</td>
+                <td width="10%">保存</td>
+            </tr>
+            </thead>
+            <tbody class="text-center">
+            <tr th:each="conf,iterStat : ${list}">
+                <form action="save">
+                    <td th:text="${iterStat.count}">1</td>
+                    <td class="text-left">
+                        <span th:text="${conf.confName}">编号</span>
+                        <input type="hidden" name="id" th:value="${conf.id}">
+                    </td>
+                    <td>
+                        <input th:if="${conf.overrided}" readonly="readonly" class="form-control" type="text" name="confValue" th:value="${conf.confValue}"
+                               value="test">
+                        <input th:unless="${conf.overrided}" class="form-control" type="text" name="confValue" th:value="${conf.confValue}"
+                               value="test">
+                        <input type="hidden" name="confName" th:value="${conf.confName}">
+                    </td>
+                    <td class="text-left" th:text="${conf.remarks}">备注</td>
+                    <td>
+                        <input th:unless="${conf.overrided}" class="form-control" type="submit" value="保存">
+                        <span th:if="${conf.overrided}">本地配置，不能修改</span>
+                    </td>
+                </form>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:replace="fragments/footer :: copy">版权信息</div>
+</div>
+
+</body>
+</html>
