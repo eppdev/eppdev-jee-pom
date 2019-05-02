@@ -1,6 +1,8 @@
-# eppdev-jee-java
+# eppdev-jee-java  [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE) <a href="https://996.icu"><img src="https://img.shields.io/badge/link-996.icu-red.svg"></a>
 
 **[English](README_en.md)**
+
+
 
 ## 说明
 
@@ -126,11 +128,9 @@ java -jar eppdev-jee-web-<version>.jar --spring.config.location=./application.pr
 ## 许可
 
 
-
  版权所有：2019，[郝金隆](mailto:jinlong.hao@eppdev.cn)
  
- 软件许可：[Anti-996 License v1.0](LICENSE-CN)
-
+ 软件许可：[996 License v1.0](LICENSE-CN)
 
 
 

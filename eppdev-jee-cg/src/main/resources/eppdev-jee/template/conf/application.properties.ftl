@@ -1,9 +1,9 @@
 #########################################
 # DataBase Configurations
 #########################################
-spring.datasource.url=jdbc:mysql://localhost:3306/eppdev_jee?useUnicode=true&amp;characterEncoding=UTF-8
-spring.datasource.username=root
-spring.datasource.password=root
+spring.datasource.url=${dbUrl}
+spring.datasource.username=${dbUsername}
+spring.datasource.password=${dbPassword}
 spring.datasource.type = com.alibaba.druid.pool.DruidDataSource
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver
 spring.datasource.continue-on-error=true

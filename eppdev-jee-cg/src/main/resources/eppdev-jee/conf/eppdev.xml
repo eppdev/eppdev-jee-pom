@@ -4,6 +4,7 @@
         <initFileType typeId="conf" typeName="基础配置" />
         <initFileType typeId="basic" typeName="基础类" />
         <initFileType typeId="utils" typeName="工具类" />
+        <initFileType typeId="testConf" typeName="测试配置" />
 
         <!-- init.conf -->
         <initFile fileName="pom.xml" type="conf">
@@ -177,6 +178,31 @@
                 <![CDATA[密码相关的工具类，用于实现密码哈希加盐和密码的有如题等]]>
             </fileInfo>
         </initFile>
+
+        <!-- init.testConf -->
+        <initFile fileName="ApplicationTest.java" type="testConf">
+            <filePathTemplate>
+                <![CDATA[${PROJECT_PATH}/src/test/java/${BASIC_PACKAGE_NAME?replace('.','/')}/ApplicationTest.java]]>
+            </filePathTemplate>
+            <contentTemplatePath>
+                <![CDATA[/eppdev-jee/template/test/ApplicationTest.java.ftl]]>
+            </contentTemplatePath>
+            <fileInfo>
+                <![CDATA[SpringTest测试引用的基础类]]>
+            </fileInfo>
+        </initFile>
+        <initFile fileName="application_test.properties" type="testConf">
+            <filePathTemplate>
+                <![CDATA[${PROJECT_PATH}/src/test/resources/application_test.properties]]>
+            </filePathTemplate>
+            <contentTemplatePath>
+                <![CDATA[/eppdev-jee/template/test/application_test.properties.ftl]]>
+            </contentTemplatePath>
+            <fileInfo>
+                <![CDATA[SpringTest测试所需的基础类]]>
+            </fileInfo>
+        </initFile>
+
     </initFileList>
 
     <tableFileList>
@@ -258,6 +284,14 @@
             </filePathTemplate>
             <contentTemplatePath dbType="default" >
                 <![CDATA[/eppdev-jee/template/service/service.ftl]]>
+            </contentTemplatePath>
+        </tableFile>
+        <tableFile type="test" replace="false">
+            <filePathTemplate>
+                <![CDATA[${basicConf.PROJECT_PATH}/src/test/java/${basicConf.BASIC_PACKAGE_NAME?replace('.','/')}<#if moduleName?exists && moduleName?trim?length &gt; 0>/${moduleName}</#if>/test/${entityName}Test.java]]>
+            </filePathTemplate>
+            <contentTemplatePath dbType="default" >
+                <![CDATA[/eppdev-jee/template/test/test.ftl]]>
             </contentTemplatePath>
         </tableFile>
         <tableFile type="controller" replace="false">

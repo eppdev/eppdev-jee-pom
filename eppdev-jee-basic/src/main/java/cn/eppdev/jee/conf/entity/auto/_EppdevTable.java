@@ -1,6 +1,6 @@
 /* FileName: _EppdevTable.java
  * Copyright EPPDEV-JEE, All Rights Preserved!
- * License: Apache 2.0
+ * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
 

@@ -1,14 +1,15 @@
+
 #########################################
 # DataBase Configurations
 #########################################
-spring.datasource.url=jdbc:mysql://10.0.2.2:3306/eppdev_jee?useUnicode=true&amp;characterEncoding=UTF-8
-spring.datasource.username=root
-spring.datasource.password=root
+spring.datasource.url=${dbUrl}
+spring.datasource.username=${dbUsername}
+spring.datasource.password=${dbPassword}
 spring.datasource.type = com.alibaba.druid.pool.DruidDataSource
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver
 spring.datasource.continue-on-error=true
 spring.datasource.filters = stat
-spring.datasource.maxActive = 5
+spring.datasource.maxActive = 50
 spring.datasource.initialSize = 1
 spring.datasource.maxWait = 60000
 spring.datasource.minIdle = 1
@@ -21,17 +22,7 @@ spring.datasource.testOnReturn = false
 spring.datasource.poolPreparedStatements = true
 spring.datasource.maxOpenPreparedStatements = 20
 spring.datasource.initialization-mode=always
-spring.datasource.sql-script-encoding=utf-8
 
-
-#########################################
-# Thymeleaf Configurations
-#########################################
-spring.thymeleaf.mode=HTML5
-spring.thymeleaf.encoding=UTF-8
-spring.thymeleaf.content-type=text/html
-# set to false for hot refresh
-spring.thymeleaf.cache=false
 
 
 #########################################
@@ -43,33 +34,9 @@ pagehelper.offset-as-page-num=false
 pagehelper.supportMethodsArguments=true
 pagehelper.params=pageSize=_pageSize;pageNum=_pageNum;
 
-#########################################
-# WebServer Configurations
-#########################################
-server.port=8083
-
 
 #########################################
 # Log Configurations
 #########################################
 logging.level.root=INFO
-logging.level.cn.eppdev.jee=DEBUG
-
-
-#########################################
-# EPPDEV-JEE config
-#########################################
-# 注释中的作者名
-eppdev.author.name=
-# 注释中的作者邮箱
-eppdev.author.mail=
-# 本地的工程地址
-eppdev.project.path=
-# 本地的Git地址（可能与工程地址不一致）
-eppdev.git.path=
-# git是否自动提交
-eppdev.git.auto-push=
-# git提交时是通过新分支来提交（主要应用于PR模式）
-eppdev.git.use-new-branch=
-# git的主分支是哪个（主要针对通过新分支来提交的情况）
-eppdev.git.main-branch-name=
+logging.level.${BASIC_PACKAGE_NAME}=DEBUG
