@@ -35,7 +35,7 @@ public class TypeMapperUtils {
         DB_TO_STD_MAP.put("TIMESTAMP", "datetime");
         DB_TO_STD_MAP.put("TINYINT", "int");
         DB_TO_STD_MAP.put("INT", "int");
-        DB_TO_STD_MAP.put("BIGINT", "long");
+        DB_TO_STD_MAP.put("BIGINT", "bigint");
         DB_TO_STD_MAP.put("DOUBLE", "double");
         DB_TO_STD_MAP.put("FLOAT", "float ");
         DB_TO_STD_MAP.put("BLOB", "bytes");

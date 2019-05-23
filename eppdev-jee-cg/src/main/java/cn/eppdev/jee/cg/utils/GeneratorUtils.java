@@ -151,7 +151,7 @@ public class GeneratorUtils {
     public static List<ColumnTypeInfo> listAllColumnType(String dbType){
         List<ColumnTypeInfo> list = new ArrayList<>();
         list.add(new ColumnTypeInfo("int", "Integer", "integer"));
-        list.add(new ColumnTypeInfo("long", "Long", "long"));
+        list.add(new ColumnTypeInfo("long", "Integer", "long"));
         list.add(new ColumnTypeInfo("decimal", "java.math.BigDecimal", "double"));
         list.add(new ColumnTypeInfo("char", "String", "char"));
         list.add(new ColumnTypeInfo("varchar", "String", "varchar"));

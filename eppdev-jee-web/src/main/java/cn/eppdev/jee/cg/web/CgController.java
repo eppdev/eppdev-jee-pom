@@ -92,6 +92,16 @@ public class CgController {
         return "redirect:/web/conf/version/view/00000000000000000000000000000000";
     }
 
+
+    @RequestMapping("/read/db/{tableName}")
+    public String readFromDb(@PathVariable("tableName") String tableName, RedirectAttributes redirectAttributes){
+        RestResult<String> result = cgService.readFromDb(tableName);
+        logger.debug("/web/cg/read/db -> result:{}", result);
+        redirectAttributes.addFlashAttribute("message", result.getMessage());
+        return "redirect:/web/conf/version/view/00000000000000000000000000000000";
+    }
+
+
     @RequestMapping("/version/{versionId}/type/{type}")
     public String generateVersionFileByType(@PathVariable("versionId") String versionId,
                                             @PathVariable("type") String type,

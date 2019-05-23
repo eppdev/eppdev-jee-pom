@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -52,103 +53,128 @@ public class DataSchemaLoadService {
     @Autowired
     EppdevVersionService versionService;
 
+    /**
+     * 根据表名，读取表信息，具体逻辑包括：<br />
+     * <ul>
+     *   <li>1. 判断表是否存在</li>
+     *   <li>2. 读取列信息</li>
+     *   <li>3. 读取主键信息</li>
+     *   <li>4. 读取索引信息</li>
+     * </ul>
+     */
+    public EppdevTable getTableFromConn(String tableName) {
+        try {
+            Connection conn = dataSource.getConnection();
+            String[] tableTypes = { "TABLE", "VIEW" };
+            ResultSet rs = conn.getMetaData().getTables(null, null, tableName, tableTypes);
+            /***********************************
+             * 一、判断表是否存在
+             ***********************************/
+            EppdevTable eppdevTable = new EppdevTable();
+            if (rs.next()) {
+                eppdevTable.setTableName(rs.getString("TABLE_NAME"));
+                eppdevTable.setTableComment(rs.getString("REMARKS"));
+                eppdevTable.setVersionId(EppdevVersion.MASTER_VERSION_ID);
+            } else {
+                return null;
+            }
+            rs.close();
+
+            /***********************************
+             * 二、读取列信息
+             ***********************************/
+            rs = conn.getMetaData().getColumns(null, null, eppdevTable.getTableName(), null);
+            List<EppdevColumn> columnList = new ArrayList<>();
+            while (rs.next()) {
+                EppdevColumn column = new EppdevColumn();
+                column.setColumnName(rs.getString("COLUMN_NAME").toLowerCase());
+                column.setColumnType(rs.getString("TYPE_NAME"));
+                column.setColumnLength(rs.getInt("COLUMN_SIZE"));
+                column.setColumnComment(rs.getString("REMARKS"));
+                columnList.add(column);
+            }
+            eppdevTable.setColumnList(columnList);
+            rs.close();
+
+            /***********************************
+             * 三、读取主键信息
+             ***********************************/
+            rs = conn.getMetaData().getPrimaryKeys(null, null, eppdevTable.getTableName());
+            while (rs.next()) {
+                String primaryKeyColumnName = rs.getString("COLUMN_NAME");
+                for (EppdevColumn column : eppdevTable.getColumnList()) {
+                    if (column.getColumnName().equals(primaryKeyColumnName)) {
+                        column.setPrimaryKeyFlag(1);
+                    }
+                }
+            }
+
+            /***********************************
+             * 四、处理索引信息
+             ***********************************/
+            rs = conn.getMetaData().getIndexInfo(null, null, eppdevTable.getTableName(), false, true);
+
+            // 4.1 依次读取数据
+            Map<String, List<Map<String, Object>>> indexMap = new HashMap<>();
+            while (rs.next()) {
+                String indexName = rs.getString("INDEX_NAME");
+                String columnName = rs.getString("COLUMN_NAME");
+                int indexPosition = rs.getInt("ORDINAL_POSITION");
+                Map<String, Object> columnInfoMap = new HashMap<>();
+                columnInfoMap.put("columnName", columnName);
+                columnInfoMap.put("indexPosition", indexPosition);
+                if (indexMap.containsKey(indexName)) {
+                    List<Map<String, Object>> list = indexMap.get(indexName);
+                    list.add(columnInfoMap);
+                } else {
+                    List<Map<String, Object>> list = new ArrayList<>();
+                    list.add(columnInfoMap);
+                    indexMap.put(indexName, list);
+                }
+            }
+            rs.close();
+
+            // 4.2 处理索引信息数据，进行数据还原
+            List<EppdevIndex> indexList = new ArrayList<>();
+            for (String idxName : indexMap.keySet()) {
+                StringBuilder sb = new StringBuilder();
+                List<Map<String, Object>> colList = indexMap.get(idxName);
+                colList.sort(new Comparator<Map<String, Object>>() {
+                    @Override
+                    public int compare(Map<String, Object> o1, Map<String, Object> o2) {
+                        return ((Integer) o1.get("indexPosition")).compareTo((Integer) o2.get("indexPosition"));
+                    }
+                });
+                for (Map<String, Object> map : colList) {
+                    sb.append(map.get("columnName") + ",");
+                }
+                String indexColumns = StringUtils.removeEnd(sb.toString(), ",");
+                EppdevIndex index = new EppdevIndex();
+                index.setIndexName(idxName);
+                index.setColumnNames(indexColumns);
+                indexList.add(index);
+            }
+            eppdevTable.setIndexList(indexList);
+            conn.close();
+            return eppdevTable;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public List<EppdevTable> listTablesFromConn() {
         List<EppdevTable> eppdevTableList = new ArrayList<>();
         try {
             Connection conn = dataSource.getConnection();
-            String[] tableTypes = {"TABLE", "VIEW"};
-            ResultSet rs = conn.getMetaData().getTables(null,
-                    null,
-                    null,
-                    tableTypes);
+            String[] tableTypes = { "TABLE", "VIEW" };
+            ResultSet rs = conn.getMetaData().getTables(null, null, null, tableTypes);
             // 表信息
             while (rs.next()) {
-                EppdevTable eppdevTable = new EppdevTable();
-                eppdevTable.setTableName(rs.getString("TABLE_NAME"));
-                eppdevTable.setTableComment(rs.getString("REMARKS"));
-                eppdevTable.setVersionId(EppdevVersion.MASTER_VERSION_ID);
-                eppdevTableList.add(eppdevTable);
+                String tableName = rs.getString("TABLE_NAME");
+                eppdevTableList.add(getTableFromConn(tableName));
             }
             rs.close();
-
-            // 列信息
-            for (EppdevTable eppdevTable : eppdevTableList) {
-                rs = conn.getMetaData().getColumns(null, null, eppdevTable.getTableName(), null);
-                List<EppdevColumn> columnList = new ArrayList<>();
-                while (rs.next()) {
-                    EppdevColumn column = new EppdevColumn();
-                    column.setColumnName(rs.getString("COLUMN_NAME").toLowerCase());
-                    column.setColumnType(rs.getString("TYPE_NAME"));
-                    column.setColumnLength(rs.getInt("COLUMN_SIZE"));
-                    column.setColumnComment(rs.getString("REMARKS"));
-                    columnList.add(column);
-                }
-                eppdevTable.setColumnList(columnList);
-                rs.close();
-            }
-
-
-            // 主键信息
-            for (EppdevTable eppdevTable : eppdevTableList) {
-                rs = conn.getMetaData().getPrimaryKeys(null, null, eppdevTable.getTableName());
-                while (rs.next()) {
-                    String primaryKeyColumnName = rs.getString("COLUMN_NAME");
-                    for (EppdevColumn column : eppdevTable.getColumnList()) {
-                        if (column.getColumnName().equals(primaryKeyColumnName)) {
-                            column.setPrimaryKeyFlag(1);
-                        }
-                    }
-                }
-            }
-
-
-            // 索引信息
-            for (EppdevTable eppdevTable : eppdevTableList) {
-                rs = conn.getMetaData().getIndexInfo(null, null, eppdevTable.getTableName(), false, true);
-
-                // 读取数据
-                Map<String, List<Map<String, Object>>> indexMap = new HashMap<>();
-                while (rs.next()) {
-                    String indexName = rs.getString("INDEX_NAME");
-                    String columnName = rs.getString("COLUMN_NAME");
-                    int indexPosition = rs.getInt("ORDINAL_POSITION");
-                    Map<String, Object> columnInfoMap = new HashMap<>();
-                    columnInfoMap.put("columnName", columnName);
-                    columnInfoMap.put("indexPosition", indexPosition);
-                    if (indexMap.containsKey(indexName)) {
-                        List<Map<String, Object>> list = indexMap.get(indexName);
-                        list.add(columnInfoMap);
-                    } else {
-                        List<Map<String, Object>> list = new ArrayList<>();
-                        list.add(columnInfoMap);
-                        indexMap.put(indexName, list);
-                    }
-                }
-                rs.close();
-
-                // 处理数据
-                List<EppdevIndex> indexList = new ArrayList<>();
-                for (String idxName : indexMap.keySet()) {
-                    StringBuilder sb = new StringBuilder();
-                    List<Map<String, Object>> colList = indexMap.get(idxName);
-                    colList.sort(new Comparator<Map<String, Object>>() {
-                        @Override
-                        public int compare(Map<String, Object> o1, Map<String, Object> o2) {
-                            return ((Integer) o1.get("indexPosition")).compareTo((Integer) o2.get("indexPosition"));
-                        }
-                    });
-                    for (Map<String, Object> map : colList) {
-                        sb.append(map.get("columnName") + ",");
-                    }
-                    String indexColumns = StringUtils.removeEnd(sb.toString(), ",");
-                    EppdevIndex index = new EppdevIndex();
-                    index.setIndexName(idxName);
-                    index.setColumnNames(indexColumns);
-                    indexList.add(index);
-                }
-                eppdevTable.setIndexList(indexList);
-            }
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -162,7 +188,26 @@ public class DataSchemaLoadService {
         logger.debug("eppdevTableList:{}", JSONUtils.toJson(eppdevTableList));
 
         for (EppdevTable table : eppdevTableList) {
-            logger.debug("table:{}", table);
+            updateTableInfo(table);
+        }
+
+    }
+
+    /**
+     * 根据表名进行数据更新
+     * @param tableName 更新数据
+     */
+    public void  updateTableInfo(String tableName){
+        logger.debug("tableName: {}", tableName);
+        updateTableInfo(getTableFromConn(tableName));
+    }
+
+    /**
+     * 更新物理表信息到配置数据中
+     * @param table 读取到的物理表信息
+     */
+    public void updateTableInfo(EppdevTable table){
+        logger.debug("table:{}", table);
             // 处理表信息
             String tableId = null;
             String tableName = table.getTableName();
@@ -178,7 +223,6 @@ public class DataSchemaLoadService {
                 tableService.save(table);
                 tableId = table.getId();
             }
-
 
             // 处理字段信息
             EppdevColumnParam columnParm = new EppdevColumnParam();
@@ -211,8 +255,8 @@ public class DataSchemaLoadService {
                 for (EppdevColumn originColumn : columnListOrigin) {
                     if (column.getColumnName().equals(originColumn.getColumnName())) {
                         if (!column.getColumnType().equals(originColumn.getColumnType()) // 类型不同
-                                || (TypeMapperUtils.getNeedLength(column.getColumnType())   // 长度有意义且长度不一致
-                                && column.getColumnLength() != originColumn.getColumnLength())) {
+                                || (TypeMapperUtils.getNeedLength(column.getColumnType()) // 长度有意义且长度不一致
+                                        && column.getColumnLength() != originColumn.getColumnLength())) {
                             originColumn.setColumnType(column.getColumnType());
                             if (null != column.getColumnComment() && column.getColumnComment().trim().length() > 0) {
                                 originColumn.setColumnComment(column.getColumnComment());
@@ -233,9 +277,8 @@ public class DataSchemaLoadService {
                         column.setSortIndex(sortIndex++);
                     }
 
-
                     // primaryKeyFlag
-                    if (column.getPrimaryKeyFlag() == null){
+                    if (column.getPrimaryKeyFlag() == null) {
                         column.setPrimaryKeyFlag(0);
                     }
 
@@ -279,7 +322,7 @@ public class DataSchemaLoadService {
                 idx.setTableId(tableId);
                 indexService.save(idx);
             }
-        }
-
     }
+
 }
+
