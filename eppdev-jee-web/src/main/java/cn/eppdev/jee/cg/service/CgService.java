@@ -103,5 +103,15 @@ public class CgService {
         }
     }
 
+    public RestResult<String> readFromDb(String tableName){
+        try{
+            dataSchemaLoadService.updateTableInfo(tableName);
+            return new RestResult<String>(RestResult.STATUS_SUCCESS, "加载成功", null);
+        } catch (Exception e){
+            logger.error("Error: {}\n{}", e.getMessage(), e.getStackTrace());
+            return new RestResult<>(RestResult.STATUS_FAILED, e.getMessage(), null);
+        }
+    }
+
 
 }

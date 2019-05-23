@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head(~{:: title})">
+    <title>版本记录</title>
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <nav th:replace="fragments/navbar :: navbar">导航栏</nav>
+    <div class="container">
+        <div th:insert="fragments/alert :: alert">alert</div>
+        <h3 class="text-center">物理表信息</h3>
+        <div class="text-center col-sm-12">
+            <button class="form-control"><a th:href="@{/web/cg/read/db}">加载最新物理表</a></button>
+        </div>
+        <div>
+            <table class="table table-bordered">
+                <thead class="text-center">
+                    <tr>
+                        <td width="15%">序号</td>
+                        <td width="40%">表名</td>
+                        <td width="25%">状态</td>
+                        <td width="20%">操作</td>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr th:each="table,iterStat : ${list}">
+                        <td th:text="${iterStat.count}">1</td>
+                        <td class="text-left">
+                            <span th:text="${table.tableName}">表名</span>
+                        </td>
+                        <td class="text-center">
+                            <span>-</span>
+                        </td>
+                        <td>
+                            <button class="form-control"><a th:href="@{'/web/cg/read/db/' + ${table.tableName}}">加载最新物理表</a></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:replace="fragments/footer :: copy">版权信息</div>
+    </div>
+
+</body>
+
+</html>
