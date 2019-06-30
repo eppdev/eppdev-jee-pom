@@ -83,7 +83,7 @@ public class _${entityName}Param extends BasicParam {
      * **********************************************/
     <#list columnList as column>
     <#if column.createEqualFlag == 1 || column.logicKeyFlag == 1 || column.createLikeFlag == 1 || column.createLeftLikeFlag == 1 || column.createInFlag == 1 || column.createCompareFlag == 1>
-    // getters for ${column.columnName}
+    // setters for ${column.columnName}
     <#if column.createEqualFlag == 1 || column.logicKeyFlag == 1>
     public void set${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}(${column.javaType} ${column.propertyName}) {
         this.${column.propertyName} = ${column.propertyName};
@@ -105,7 +105,7 @@ public class _${entityName}Param extends BasicParam {
     }
     </#if>
     <#if column.createCompareFlag == 1>
-    public void get_min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}(${column.javaType} _min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}) {
+    public void set_min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}(${column.javaType} _min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}) {
         this._min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} = _min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)};
     }
     public void set_max${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}(${column.javaType} _max${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}){
