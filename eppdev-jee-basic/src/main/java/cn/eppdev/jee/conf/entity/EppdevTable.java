@@ -19,6 +19,7 @@ import java.util.Map;
 public class EppdevTable extends _EppdevTable{
     private List<EppdevColumn> columnList;
     private List<EppdevIndex> indexList;
+    private List<EppdevTableLog> logList;
     private EppdevVersion version;
     private Map<String, String> basicConf;
 
@@ -52,6 +53,14 @@ public class EppdevTable extends _EppdevTable{
 
     public void setBasicConf(Map<String, String> basicConf) {
         this.basicConf = basicConf;
+    }
+
+    public List<EppdevTableLog> getLogList() {
+        return logList;
+    }
+
+    public void setLogList(List<EppdevTableLog> logList) {
+        this.logList = logList;
     }
 
     @JsonIgnore

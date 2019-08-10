@@ -6,6 +6,7 @@
 package cn.eppdev.jee.conf.service;
 
 import cn.eppdev.jee.conf.entity.EppdevIndex;
+import cn.eppdev.jee.conf.entity.EppdevTableLog;
 import cn.eppdev.jee.share.entity.RestResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,9 +23,13 @@ public class IndexService {
     @Autowired
     EppdevIndexService eppdevIndexService;
 
+    @Autowired
+    TableLogService tableLogService;
+
     public RestResult<String> add(EppdevIndex eppdevIndex){
         try{
             int cnt = eppdevIndexService.save(eppdevIndex);
+            tableLogService.addLog(eppdevIndex.getTableId(), EppdevTableLog.OPER_TYPE_UPDATE, "添加索引：" + eppdevIndex.getIndexName());
             if (cnt == 1){
                 return new RestResult<>(RestResult.STATUS_SUCCESS, "Success", eppdevIndex.getId());
             } else {
@@ -38,7 +43,9 @@ public class IndexService {
 
     public RestResult<Integer> delete(String id){
         try {
+            EppdevIndex index = eppdevIndexService.get(id);
             int cnt = eppdevIndexService.delete(id);
+            tableLogService.addLog(index.getTableId(), EppdevTableLog.OPER_TYPE_UPDATE, "删除索引：" + index.getIndexName());
             if (cnt == 1){
                 return new RestResult<>(RestResult.STATUS_SUCCESS, "Success", cnt);
             } else {
