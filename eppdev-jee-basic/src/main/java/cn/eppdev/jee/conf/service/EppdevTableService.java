@@ -30,6 +30,9 @@ public class EppdevTableService extends _EppdevTableService {
     @Autowired
     EppdevConfService confService;
 
+    @Autowired
+    EppdevTableLogService tableLogService;
+
     @Override
     public void customeInit(EppdevTable entity) {
         // 初始化originId
@@ -71,6 +74,7 @@ public class EppdevTableService extends _EppdevTableService {
             table.setColumnList(columnService.listByTableId(id));
             table.setIndexList(indexService.listByTableId(id));
             table.setBasicConf(confService.getAllConf());
+            table.setLogList(tableLogService.listByTableId(id));
         }
         return table;
     }

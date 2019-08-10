@@ -1,0 +1,17 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.eppdev.jee.conf.dao.EppdevTableLogDao">
+
+    <!-- 此段代码将在_EppdevTableLogDao.xml中引用，请根据需要添加，切勿删除 -->
+    <sql id="customRefColumns">
+
+    </sql>
+
+    <!-- 此段代码将在_EppdevTableLogDao.xml中引用，请根据需要添加，切勿删除 -->
+    <sql id="customRefJoin">
+
+    </sql>
+
+
+</mapper>

@@ -164,6 +164,34 @@
         </div>
     </div>
 
+
+    <div class="row panel panel-default">
+        <div class="panel-heading">修订记录</div>
+        <div class="panel-body">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <td class="text-center" width="5%">序号</td>
+                    <td class="text-center" width="10%">修改类型</td>
+                    <td class="text-center" width="10%">操作人</td>
+                    <td class="text-center" width="15%">操作时间</td>
+                    <td class="text-center" width="60%">操作内容</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="logInfo,iterStat : ${table.logList}">
+                    <td class="text-center" th:text="${iterStat.count}"></td>
+                    <td class="text-center" th:text="${logInfo.operType}"></td>
+                    <td th:text="${logInfo.authorName}"></td>
+                    <td class="text-center" th:text="${#dates.format(logInfo.updateDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <td><pre th:text="${logInfo.operContent}"></pre></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
 </div>
 <div th:replace="fragments/footer :: copy"></div>
 </div>
