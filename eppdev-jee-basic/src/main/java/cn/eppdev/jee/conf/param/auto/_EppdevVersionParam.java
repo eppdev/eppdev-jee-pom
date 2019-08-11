@@ -1,8 +1,19 @@
 /* FileName: EppdevVersionParam.java
  * Copyright EPPDEV-JEE, All Rights Preserved!
- * License: Anti-996 License 1.0
+ * License: Anti-996 License V1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
+
+/* *************************************************
+ * 修订历史：
+ * *************************************************
+  修改人：jinlong.hao
+  修改时间：2019-08-11
+  修改类型：修改库表
+  修改内容：
+    - 修改表信息：_eppdev_version
+----------------------------------------------------
+************************************************** */
 
 package cn.eppdev.jee.conf.param.auto;
 
@@ -49,17 +60,17 @@ public class _EppdevVersionParam extends BasicParam {
     /* ***********************************************
      * setters
      * **********************************************/
-    // getters for id
+    // setters for id
     public void setId(String id) {
         this.id = id;
     }
 
-    // getters for version_name
+    // setters for version_name
     public void setVersionName(String versionName) {
         this.versionName = versionName;
     }
 
-    // getters for del_flag
+    // setters for del_flag
     public void setDelFlag(Integer delFlag) {
         this.delFlag = delFlag;
     }

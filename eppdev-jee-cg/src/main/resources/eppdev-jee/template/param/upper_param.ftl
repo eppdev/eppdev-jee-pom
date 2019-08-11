@@ -4,22 +4,22 @@
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
 
-/***************************************************
+/* *************************************************
  * 修订历史：
- ***************************************************
+ * *************************************************
 <#if logList?exists>
 <#list logList as log>
-修改人：${log.authorName}
-修改时间：${log.updateDate?string('yyyy-MM-dd')}
-修改类型：${log.operType}
-修改内容：
+  修改人：${log.authorName}
+  修改时间：${log.updateDate?string('yyyy-MM-dd')}
+  修改类型：${log.operType}
+  修改内容：
 <#list log.operContent?split("\n") as s>
-  - ${s}
+    - ${s}
 </#list>
 ----------------------------------------------------
 </#list>
 </#if>
-****************************************************/
+************************************************** */
 
 package ${basicConf.BASIC_PACKAGE_NAME?trim}<#if moduleName?exists && moduleName?trim?length &gt; 0>.${moduleName?trim}</#if>.param.auto;
 
