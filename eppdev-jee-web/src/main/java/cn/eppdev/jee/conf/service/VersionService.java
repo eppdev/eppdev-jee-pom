@@ -26,7 +26,6 @@ import java.util.List;
  * @author jinlong.hao
  */
 @Service
-@Transactional(readOnly = true)
 public class VersionService {
 
     static Logger logger = LoggerFactory.getLogger(VersionService.class);
@@ -70,7 +69,6 @@ public class VersionService {
      * @param fromVersionId 老版本的id
      * @return 新的versionId
      */
-    @Transactional(readOnly = false)
     public RestResult<String> add(String versionName, String fromVersionId){
         try {
             /**

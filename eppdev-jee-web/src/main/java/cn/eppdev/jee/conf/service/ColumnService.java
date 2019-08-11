@@ -22,7 +22,6 @@ import java.util.List;
  * @author jinlong.hao
  */
 @Service
-@Transactional(readOnly = true)
 public class ColumnService {
     static Logger logger = LoggerFactory.getLogger(ColumnService.class);
 
@@ -52,7 +51,6 @@ public class ColumnService {
         }
     }
 
-    @Transactional(readOnly = false)
     public RestResult<String> add(EppdevColumn eppdevColumn) {
         try {
             List<EppdevColumn> list = eppdevColumnService.listByTableId(eppdevColumn.getTableId());
@@ -77,7 +75,6 @@ public class ColumnService {
     }
 
 
-    @Transactional(readOnly = false)
     public RestResult<Integer> update(EppdevColumn eppdevColumn) {
         try {
             int cnt = eppdevColumnService.save(eppdevColumn);
@@ -94,7 +91,6 @@ public class ColumnService {
     }
 
 
-    @Transactional(readOnly = false)
     public RestResult<Integer> delete(String id) {
         try {
             EppdevColumn column = eppdevColumnService.get(id);

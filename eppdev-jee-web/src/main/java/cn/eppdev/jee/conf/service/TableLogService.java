@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -26,12 +27,13 @@ public class TableLogService {
     @Autowired
     EppdevConfService eppdevConfService;
 
+    @Transactional(readOnly = false)
     public int addLog(String tableId, String operType, String operContent) {
         String authorName = eppdevConfService.getConf("AUTHOR_NAME");
         List<EppdevTableLog> list = eppdevTableLogService.listByTableId(tableId);
         // 24小时之内同一个人的操作，直接合并
         if (list.size() > 0 && authorName.equals(list.get(0).getAuthorName())
-                &&  System.currentTimeMillis() - list.get(0).getCreateDate().getTime() < 1000L*60*24) {
+                &&  System.currentTimeMillis() - list.get(0).getCreateDate().getTime() < 1000L*60*60*8) {
             EppdevTableLog eppdevTableLog  = list.get(0);
             eppdevTableLog.setOperContent(eppdevTableLog.getOperContent() + "\n" + operContent);
             eppdevTableLogService.save(eppdevTableLog);

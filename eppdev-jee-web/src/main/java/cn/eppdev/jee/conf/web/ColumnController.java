@@ -88,7 +88,7 @@ public class ColumnController {
         logger.debug("/web/conf/version/{}/table/{}/column/update/do -> result:{}",
                 versionId, tableId, result);
         if (RestResult.STATUS_SUCCESS == result.getStatus()) {
-            model.addAttribute("message", "修改成功");
+            redirectAttributes.addFlashAttribute("message", "修改成功");
         } else {
             redirectAttributes.addFlashAttribute("message", "修改失败：" + result.getMessage());
         }
