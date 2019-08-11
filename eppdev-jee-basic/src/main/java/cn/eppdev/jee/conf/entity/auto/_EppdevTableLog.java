@@ -4,6 +4,17 @@
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
 
+/* *************************************************
+ * 修订历史：
+ * *************************************************
+  修改人：jinlong.hao
+  修改时间：2019-08-11
+  修改类型：修改库表
+  修改内容：
+    - 修改表信息：_eppdev_table_log
+----------------------------------------------------
+************************************************** */
+
 package cn.eppdev.jee.conf.entity.auto;
 
 import cn.eppdev.jee.commons.entity.BasicEntity;
