@@ -1,5 +1,5 @@
 /* FileName: _EppdevIndex.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright EPPDEV.CN, All Rights Preserved!
  * License: Anti-996 License V1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -8,15 +8,18 @@
  * 修订历史：
  * *************************************************
   修改人：jinlong.hao
-  修改时间：2019-08-11
+  修改时间：2019-08-16
   修改类型：修改库表
   修改内容：
     - 修改表信息：_eppdev_index
+    - 修改字段:table_id
+    - 修改字段:index_name
 ----------------------------------------------------
 ************************************************** */
 
 package cn.eppdev.jee.conf.entity.auto;
 
+import cn.eppdev.jee.commons.entity.ColumnEntity;
 import cn.eppdev.jee.commons.entity.BasicEntity;
 
 /**
@@ -32,16 +35,19 @@ public class _EppdevIndex extends BasicEntity {
     public static final String COLUMN_TABLE_ID_ = "table_id";
     public static final String COLUMN_TABLE_ID_ASC_ = "table_id asc";
     public static final String COLUMN_TABLE_ID_DESC_ = "table_id desc";
+    public static final ColumnEntity COLUMN_ENTITY_TABLE_ID_ = new ColumnEntity("table_id", "tableId");
 
     // static properties for index_name
     public static final String COLUMN_INDEX_NAME_ = "index_name";
     public static final String COLUMN_INDEX_NAME_ASC_ = "index_name asc";
     public static final String COLUMN_INDEX_NAME_DESC_ = "index_name desc";
+    public static final ColumnEntity COLUMN_ENTITY_INDEX_NAME_ = new ColumnEntity("index_name", "indexName");
 
     // static properties for column_names
     public static final String COLUMN_COLUMN_NAMES_ = "column_names";
     public static final String COLUMN_COLUMN_NAMES_ASC_ = "column_names asc";
     public static final String COLUMN_COLUMN_NAMES_DESC_ = "column_names desc";
+    public static final ColumnEntity COLUMN_ENTITY_COLUMN_NAMES_ = new ColumnEntity("column_names", "columnNames");
 
 
 
@@ -63,17 +69,17 @@ public class _EppdevIndex extends BasicEntity {
      * **********************************************/
     // getters for table_id
     public String getTableId() {
-        return tableId;
+        return this.tableId;
     }
 
     // getters for index_name
     public String getIndexName() {
-        return indexName;
+        return this.indexName;
     }
 
     // getters for column_names
     public String getColumnNames() {
-        return columnNames;
+        return this.columnNames;
     }
 
 

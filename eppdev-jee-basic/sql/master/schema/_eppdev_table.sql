@@ -2,12 +2,13 @@
 -- 修订历史：
 -- ------------------------------------------------
 -- 修改人：jinlong.hao
--- 修改时间：2019-08-11
+-- 修改时间：2019-08-16
 -- 修改类型：修改库表
 -- 修改内容：
 --  - 修改表信息：_eppdev_table
+--  - 修改字段:table_name
+--  - 修改字段:version_id
 -- --------------------------------------------------
-
 
 create table _eppdev_table(
   id char(32) comment 'UUID, 唯一标识',
@@ -15,6 +16,7 @@ create table _eppdev_table(
   table_comment varchar(255) comment '表备注',
   module_name varchar(255) comment '模块名称',
   entity_name varchar(255) comment '对应的实体名称',
+  entity_name_upper varchar(255) comment '对应的实体名称首字母大写',
   table_type integer(10) comment '库表类型',
   version_id char(32) comment '对应的版本id',
   create_sql text(2147483647) comment '创建语句',

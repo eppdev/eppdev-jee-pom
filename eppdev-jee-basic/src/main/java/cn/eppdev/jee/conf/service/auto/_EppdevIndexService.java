@@ -1,5 +1,5 @@
 /* FileName: EppdevIndexService.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright EPPDEV.CN, All Rights Preserved!
  * License: Anti-996 License V1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -8,10 +8,12 @@
  * 修订历史：
  * *************************************************
   修改人：jinlong.hao
-  修改时间：2019-08-11
+  修改时间：2019-08-16
   修改类型：修改库表
   修改内容：
     - 修改表信息：_eppdev_index
+    - 修改字段:table_id
+    - 修改字段:index_name
 ----------------------------------------------------
 ************************************************** */
 
@@ -42,19 +44,6 @@ public abstract class _EppdevIndexService extends BasicService<EppdevIndex, Eppd
     @Override
     public boolean exists(EppdevIndex entity) {
 
-        // 判断逻辑主键
-        EppdevIndexParam param = new EppdevIndexParam();
-        param.setTableId(entity.getTableId());
-        param.setIndexName(entity.getIndexName());
-        param.set_pageNum(1);
-        param.set_pageSize(1);
-        PageInfo<EppdevIndex> pageInfo = list(param);
-        if (pageInfo.getTotal() > 0) {
-            if (pageInfo.getList().get(0).getId().equals(entity.getId())){
-                return false;
-            }
-            return true;
-        }
 
         return false;
     }

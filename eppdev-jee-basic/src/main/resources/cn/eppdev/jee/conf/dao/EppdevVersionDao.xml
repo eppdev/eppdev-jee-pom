@@ -13,5 +13,15 @@
 
     </sql>
 
+    <!-- 此段代码将在_TestDao.xml的listGroupBy中引用，请根据需要添加，切勿删除 -->
+    <sql id="customRefGroupByColumns">
+
+    </sql>
+
+    <!-- 此段代码将在_TestDao.xml的listGroupBy中引用，请根据需要添加，切勿删除 -->
+    <sql id="customRefGroupByJoin">
+
+    </sql>
+
 
 </mapper>

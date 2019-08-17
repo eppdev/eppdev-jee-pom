@@ -1,5 +1,5 @@
 /* FileName: BasicParam.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright EPPDEV.CN, All Rights Preserved!
  * License: Anti-996 License V1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -29,7 +29,7 @@ public class BasicParam {
 
     private Integer _pageSize;
 
-    private List<ColumnEntity> groupByList;
+    private List<ColumnEntity> _groupByList;
 
     public String get_orderBy() {
         return _orderBy;
@@ -64,21 +64,21 @@ public class BasicParam {
     }
 
 
-    public List<ColumnEntity> getGroupByList() {
-        return groupByList;
+    public List<ColumnEntity> get_groupByList() {
+        return _groupByList;
     }
 
-    public void setGroupByList(List<ColumnEntity> groupByList) {
-        this.groupByList = groupByList;
+    public void set_groupByList(List<ColumnEntity> _groupByList) {
+        this._groupByList = _groupByList;
     }
 
 
     public void buildBroupBy(ColumnEntity... columnEntities) {
-        if (groupByList == null) {
-            groupByList = new ArrayList<>();
+        if (_groupByList == null) {
+            _groupByList = new ArrayList<>();
         }
         for (ColumnEntity entity: columnEntities) {
-            groupByList.add(entity);
+            _groupByList.add(entity);
         }
     }
 

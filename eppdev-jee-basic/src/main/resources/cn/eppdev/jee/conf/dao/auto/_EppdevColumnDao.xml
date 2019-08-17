@@ -5,38 +5,12 @@
  - 修订历史：
  ===================================================
   修改人：jinlong.hao
-  修改时间：2019-08-11
-  修改类型：修改库表
-  修改内容：
-    - 修改字段:create_count_distinct_in_groupby_flag
-    - 修改字段:create_cnt_dist_in_groupby_flag
- ===================================================
-  修改人：jinlong.hao
-  修改时间：2019-08-11
-  修改类型：修改库表
-  修改内容：
-    - 修改字段:create_sum_in_groupby_flag
-    - 修改字段:create_min_in_groupby_flag
-    - 修改字段:group_by_param_flag
-    - 修改表信息：_eppdev_column
-    - 修改字段:group_by_param_flag
-    - 修改字段:group_by_param_flag
-    - 修改字段:create_sum_in_groupby_flag
-    - 修改字段:create_min_in_groupby_flag
- ===================================================
-  修改人：jinlong.hao
-  修改时间：2019-08-11
+  修改时间：2019-08-16
   修改类型：修改库表
   修改内容：
     - 修改表信息：_eppdev_column
-    - 修改字段:group_by_param_flag
-    - 修改字段:group_by_param_flag
-    - 修改字段:create_sum_in_groupby_flag
-    - 修改字段:create_sum_in_groupby_flag
-    - 修改字段:create_sum_in_groupby_flag
-    - 修改字段:group_by_param_flag
-    - 修改字段:group_by_param_flag
-    - 修改字段:group_by_param_flag
+    - 修改字段:table_id
+    - 修改字段:column_name
  ===================================================
 ================================================= -->
 
@@ -165,6 +139,7 @@
         <where>
             <if test="id != null and id != ''">and a.id=#{id}</if>
             <if test="tableId != null and tableId != ''">and a.table_id=#{tableId}</if>
+            <if test="columnName != null and columnName != ''">and a.column_name=#{columnName}</if>
             <if test="delFlag != null">and a.del_flag=#{delFlag}</if>
                 and a.del_flag = 0
         </where>
@@ -245,6 +220,45 @@
             <otherwise>
                 order by a.update_date desc
             </otherwise>
+        </choose>
+    </select>
+
+
+    <select id="listGroupBy" resultType="cn.eppdev.jee.conf.entity.EppdevColumn">
+        select
+        <trim suffixOverrides=",">
+            count(1) as "_count",
+            <if test="_groupByList != null and _groupByList.length > 0">
+            <foreach collection="_groupByList" item="_item">
+            a.${_item.columnName} as ${_item.propertyName},
+            </foreach>
+            </if>
+            <include refid="cn.eppdev.jee.conf.dao.EppdevColumnDao.customRefGroupByColumns"/>
+        </trim>
+        from _eppdev_column a
+        <include refid="cn.eppdev.jee.conf.dao.EppdevColumnDao.customRefGroupByJoin"/>
+        <where>
+            <if test="id != null and id != ''">and a.id=#{id}</if>
+            <if test="tableId != null and tableId != ''">and a.table_id=#{tableId}</if>
+            <if test="columnName != null and columnName != ''">and a.column_name=#{columnName}</if>
+            <if test="delFlag != null">and a.del_flag=#{delFlag}</if>
+                and a.del_flag = 0
+            <if test="_customWhere != null and _customWhere != ''">${_customWhere}</if>
+        </where>
+        group by
+        <trim suffixOverrides=",">
+            null,
+            <if test="_groupByList != null and _groupByList.length > 0">
+            <foreach collection="_groupByList" item="_item">
+            a.${_item.columnName},
+            </foreach>
+            </if>
+            <include refid="cn.eppdev.jee.conf.dao.EppdevColumnDao.customRefGroupByColumns"/>
+        </trim>
+        <choose>
+            <when test="_orderBy != null and _orderBy != ''">
+                order by ${_orderBy}
+            </when>
         </choose>
     </select>
 

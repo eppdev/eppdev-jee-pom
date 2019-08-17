@@ -1,5 +1,5 @@
 /* FileName: EppdevTableLogParam.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright EPPDEV.CN, All Rights Preserved!
  * License: Anti-996 License V1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -8,10 +8,12 @@
  * 修订历史：
  * *************************************************
   修改人：jinlong.hao
-  修改时间：2019-08-11
+  修改时间：2019-08-16
   修改类型：修改库表
   修改内容：
     - 修改表信息：_eppdev_table_log
+    - 修改字段:table_id
+    - 修改字段:author_name
 ----------------------------------------------------
 ************************************************** */
 
@@ -30,19 +32,12 @@ public class _EppdevTableLogParam extends BasicParam {
      * **********************************************/
     // properties for id
     private String id;
-    private java.util.List<String> _inIdList;
 
     // properties for table_id
     private String tableId;
 
     // properties for author_name
     private String authorName;
-
-    // properties for create_by
-    private String createBy;
-
-    // properties for update_by
-    private String updateBy;
 
     // properties for del_flag
     private Integer delFlag;
@@ -55,9 +50,6 @@ public class _EppdevTableLogParam extends BasicParam {
     public String getId() {
         return id;
     }
-    public java.util.List<String> get_inIdList() {
-        return _inIdList;
-    }
 
     // getters for table_id
     public String getTableId() {
@@ -67,16 +59,6 @@ public class _EppdevTableLogParam extends BasicParam {
     // getters for author_name
     public String getAuthorName() {
         return authorName;
-    }
-
-    // getters for create_by
-    public String getCreateBy() {
-        return createBy;
-    }
-
-    // getters for update_by
-    public String getUpdateBy() {
-        return updateBy;
     }
 
     // getters for del_flag
@@ -92,9 +74,6 @@ public class _EppdevTableLogParam extends BasicParam {
     public void setId(String id) {
         this.id = id;
     }
-    public void set_inId(java.util.List<String> _inIdList) {
-        this._inIdList = _inIdList;
-    }
 
     // setters for table_id
     public void setTableId(String tableId) {
@@ -104,16 +83,6 @@ public class _EppdevTableLogParam extends BasicParam {
     // setters for author_name
     public void setAuthorName(String authorName) {
         this.authorName = authorName;
-    }
-
-    // setters for create_by
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy;
-    }
-
-    // setters for update_by
-    public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
     }
 
     // setters for del_flag
