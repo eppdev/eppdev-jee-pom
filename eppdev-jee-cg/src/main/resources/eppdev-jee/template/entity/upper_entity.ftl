@@ -43,7 +43,8 @@ public class _${entityName} extends BasicEntity {
     public static final String COLUMN_${column.columnName?upper_case}_ = "${column.columnName}";
     public static final String COLUMN_${column.columnName?upper_case}_ASC_ = "${column.columnName} asc";
     public static final String COLUMN_${column.columnName?upper_case}_DESC_ = "${column.columnName} desc";
-    public static final String COLUMN_ENTITY_${column.columnName?upper_case}_ = new ColumnEntity("${column.columnName}", "${column.propertyName}");
+    public static final ColumnEntity COLUMN_ENTITY_${column.columnName?upper_case}_ = new ColumnEntity("${column.columnName}", "${column.propertyName}");
+
     </#if>
     </#list>
 
