@@ -63,6 +63,10 @@ public class EppdevTable extends _EppdevTable{
         this.logList = logList;
     }
 
+    /**
+     * 获取物理主键信息
+     * @return
+     */
     @JsonIgnore
     public List<EppdevColumn> getPrimaryKeyList(){
         List<EppdevColumn> list = new ArrayList<>();
@@ -74,6 +78,10 @@ public class EppdevTable extends _EppdevTable{
         return list;
     }
 
+    /**
+     * 获取业务主键信息
+     * @return
+     */
     @JsonIgnore
     public List<EppdevColumn> getLogicKeyList(){
         List<EppdevColumn> list = new ArrayList<>();
@@ -84,4 +92,5 @@ public class EppdevTable extends _EppdevTable{
         }
         return list;
     }
+
 }

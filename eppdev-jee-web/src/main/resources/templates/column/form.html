@@ -17,11 +17,12 @@
     <br/>
     <div class="row">
         <form action="do" class="form-horizontal" role="form">
+            <h4 class="text-center">1. 基础属性</h4>
             <input type="hidden" name="tableId" th:value="${column.tableId}"/>
             <input type="hidden" name="id" th:value="${column.id}"/>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="columnName">字段名：</label>
-                <div class="col-sm-9">
+                <label class="control-label col-sm-3" for="columnName">字段名：</label>
+                <div class="col-sm-8">
                     <input id="columnName" type="text" name="columnName"
                            th:value="${column} ? ${column.columnName} : ''"
                            class="form-control input-sm"
@@ -29,8 +30,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="primaryKeyFlag">是否主键：</label>
-                <div class="col-sm-9">
+                <label class="control-label col-sm-3" for="primaryKeyFlag">是否主键：</label>
+                <div class="col-sm-8">
                     <select id="primaryKeyFlag" name="primaryKeyFlag" class="form-control">
                         <option value="0">否</option>
                         <option value="1"
@@ -40,8 +41,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="logicKeyFlag">是否业务主键：</label>
-                <div class="col-sm-9">
+                <label class="control-label col-sm-3" for="logicKeyFlag">是否业务主键：</label>
+                <div class="col-sm-8">
                     <select id="logicKeyFlag" name="logicKeyFlag" class="form-control">
                         <option value="0">否</option>
                         <option value="1"
@@ -51,8 +52,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="columnType">字段类型：</label>
-                <div class="col-sm-9">
+                <label class="control-label col-sm-3" for="columnType">字段类型：</label>
+                <div class="col-sm-8">
                     <select id="columnType" name="columnType" class="form-control">
                         <option th:each="type : ${columnTypeList}"
                                 th:text="${type.columnType}"
@@ -63,8 +64,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="columnLength">字段长度：</label>
-                <div class="col-sm-9">
+                <label class="control-label col-sm-3" for="columnLength">字段长度：</label>
+                <div class="col-sm-8">
                     <input id="columnLength" type="text" name="columnLength"
                            th:value="${column} ? ${column.columnLength} : ''"
                            class="form-control input-sm"
@@ -72,8 +73,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="columnComment">字段说明：</label>
-                <div class="col-sm-9">
+                <label class="control-label col-sm-3" for="columnComment">字段说明：</label>
+                <div class="col-sm-8">
                     <input id="columnComment" type="text" name="columnComment"
                            th:value="${column} ? ${column.columnComment} : ''"
                            class="form-control input-sm"
@@ -81,8 +82,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="propertyName">实体名：</label>
-                <div class="col-sm-9">
+                <label class="control-label col-sm-3" for="propertyName">实体名：</label>
+                <div class="col-sm-8">
                     <input id="propertyName" type="text" name="propertyName"
                            th:value="${column} ? ${column.propertyName} : ''"
                            class="form-control input-sm"
@@ -90,8 +91,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="javaType">属性类：</label>
-                <div class="col-sm-9">
+                <label class="control-label col-sm-3" for="javaType">属性类：</label>
+                <div class="col-sm-8">
                     <input id="javaType" type="text" name="javaType"
                            th:value="${column} ? ${column.javaType} : ''"
                            class="form-control input-sm"
@@ -99,8 +100,28 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="createEqualFlag">是否创建=条件：</label>
-                <div class="col-sm-9">
+                <label class="control-label col-sm-3" for="sortIndex">列排序：</label>
+                <div class="col-sm-8">
+                    <input id="sortIndex" type="text" name="sortIndex"
+                           th:value="${column} ? ${column.sortIndex} : ''"
+                           class="form-control input-sm"
+                           placeholder="字段排序"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-3">备注：</label>
+                <div class="col-sm-8">
+                <textarea id="remarks" name="remark" rows="5"
+                          th:text="${column}? ${column.remarks} : ''"
+                          class="form-control">
+                </textarea>
+                </div>
+            </div>
+            <h4 class="text-center">2. 查询条件</h4>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="createEqualFlag">是否创建=条件：</label>
+                <div class="col-sm-8">
                     <select id="createEqualFlag" name="createEqualFlag" class="form-control">
                         <option value="0">否</option>
                         <option value="1"
@@ -110,8 +131,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="createLikeFlag">是否创建like条件：</label>
-                <div class="col-sm-9">
+                <label class="control-label col-sm-3" for="createLikeFlag">是否创建like条件：</label>
+                <div class="col-sm-8">
                     <select id="createLikeFlag" name="createLikeFlag" class="form-control">
                         <option value="0">否</option>
                         <option value="1"
@@ -121,8 +142,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="createLeftLikeFlag">是否创建left like条件：</label>
-                <div class="col-sm-9">
+                <label class="control-label col-sm-3" for="createLeftLikeFlag">是否创建left like条件：</label>
+                <div class="col-sm-8">
                     <select id="createLeftLikeFlag" name="createLeftLikeFlag" class="form-control">
                         <option value="0">否</option>
                         <option value="1"
@@ -132,8 +153,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="createInFlag">是否创建in查询条件：</label>
-                <div class="col-sm-9">
+                <label class="control-label col-sm-3" for="createInFlag">是否创建in查询条件：</label>
+                <div class="col-sm-8">
                     <select id="createInFlag" name="createInFlag" class="form-control">
                         <option value="0">否</option>
                         <option value="1"
@@ -144,8 +165,8 @@
             </div>
 
             <div class="form-group">
-                <label class="control-label col-sm-2" for="createCompareFlag">是否创建大于小于条件：</label>
-                <div class="col-sm-9">
+                <label class="control-label col-sm-3" for="createCompareFlag">是否创建大于小于条件：</label>
+                <div class="col-sm-8">
                     <select id="createCompareFlag" name="createCompareFlag" class="form-control">
                         <option value="0">否</option>
                         <option value="1"
@@ -154,26 +175,68 @@
                     </select>
                 </div>
             </div>
-
+            <h4 class="text-center">3. GroupBy结果</h4>
             <div class="form-group">
-                <label class="control-label col-sm-2" for="sortIndex">列排序：</label>
-                <div class="col-sm-9">
-                    <input id="sortIndex" type="text" name="sortIndex"
-                           th:value="${column} ? ${column.sortIndex} : ''"
-                           class="form-control input-sm"
-                           placeholder="字段排序"/>
+                <label class="control-label col-sm-3" for="createCntDistInGroupbyFlag">是否在GroupBy中创建count distinct：</label>
+                <div class="col-sm-8">
+                    <select id="createCntDistInGroupbyFlag" name="createCntDistInGroupbyFlag" class="form-control">
+                        <option value="0">否</option>
+                        <option value="1"
+                                th:selected="${column.createCntDistInGroupbyFlag}==1? 'selected'">是
+                        </option>
+                    </select>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="control-label col-sm-2">备注：</label>
-                <div class="col-sm-9">
-                <textarea id="remarks" name="remark" rows="5"
-                          th:text="${column}? ${column.remarks} : ''"
-                          class="form-control">
-                </textarea>
+                <label class="control-label col-sm-3" for="createAvgInGroupbyFlag">是否在GroupBy中创建AVG：</label>
+                <div class="col-sm-8">
+                    <select id="createAvgInGroupbyFlag" name="createAvgInGroupbyFlag" class="form-control">
+                        <option value="0">否</option>
+                        <option value="1"
+                                th:selected="${column.createAvgInGroupbyFlag}==1? 'selected'">是
+                        </option>
+                    </select>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="createSumInGroupbyFlag">是否在GroupBy中创建SUM：</label>
+                <div class="col-sm-8">
+                    <select id="createSumInGroupbyFlag" name="createSumInGroupbyFlag" class="form-control">
+                        <option value="0">否</option>
+                        <option value="1"
+                                th:selected="${column.createSumInGroupbyFlag}==1? 'selected'">是
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="createMinInGroupbyFlag">是否在GroupBy中创建MIN：</label>
+                <div class="col-sm-8">
+                    <select id="createMinInGroupbyFlag" name="createMinInGroupbyFlag" class="form-control">
+                        <option value="0">否</option>
+                        <option value="1"
+                                th:selected="${column.createMinInGroupbyFlag}==1? 'selected'">是
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="createMaxInGroupbyFlag">是否在GroupBy中创建MAX：</label>
+                <div class="col-sm-8">
+                    <select id="createMaxInGroupbyFlag" name="createMaxInGroupbyFlag" class="form-control">
+                        <option value="0">否</option>
+                        <option value="1"
+                                th:selected="${column.createMaxInGroupbyFlag}==1? 'selected'">是
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+
             <div class="form-group text-center">
                 <input type="submit" value="提交"/>
             </div>

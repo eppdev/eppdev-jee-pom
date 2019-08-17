@@ -58,20 +58,29 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <td width="5%" class="text-center">序号</td>
-                    <td width="10%" class="text-center">列名</td>
-                    <td width="5%" class="text-center">类型</td>
-                    <td width="5%" class="text-center">长度</td>
-                    <td width="5%" class="text-center">主键</td>
-                    <td width="10%" class="text-center">业务主键</td>
-                    <td width="10%" class="text-center">属性名称</td>
-                    <td width="25%" class="text-center">说明</td>
+                    <td width="4%" rowspan="2" class="text-center">序号</td>
+                    <td width="8%" rowspan="2" class="text-center">列名</td>
+                    <td width="5%" rowspan="2" class="text-center">类型</td>
+                    <td width="5%" rowspan="2" class="text-center">长度</td>
+                    <td width="5%" rowspan="2" class="text-center">主键</td>
+                    <td width="5%" rowspan="2" class="text-center">业务主键</td>
+                    <td width="8%" rowspan="2" class="text-center">属性名称</td>
+                    <td width="20%" rowspan="2" class="text-center">说明</td>
+                    <td width="15%" colspan="5" class="text-center">查询条件</td>
+                    <td width="15%" colspan="5" class="text-center">GroupBy条件</td>
+                    <td width="10%" rowspan="2" class="text-center">操作</td>
+                </tr>
+                <tr>
                     <td width="3%" class="text-center" title="创建=查询条件">=</td>
                     <td width="3%" class="text-center" title="创建like查询条件">%</td>
                     <td width="3%" class="text-center" title="创建left like查询条件">X%</td>
                     <td width="3%" class="text-center" title="创建in查询条件">in</td>
                     <td width="3%" class="text-center" title="创建<>查询条件">&lt;&gt;</td>
-                    <td width="10%" class="text-center">操作</td>
+                    <td width="3%" class="text-center">dist_cnt</td>
+                    <td width="3%" class="text-center">avg</td>
+                    <td width="3%" class="text-center">sum</td>
+                    <td width="3%" class="text-center">min</td>
+                    <td width="3%" class="text-center">max</td>
                 </tr>
                 </thead>
                 <tbody>
@@ -89,6 +98,11 @@
                     <td th:text="${column.createLeftLikeFlag}"></td>
                     <td th:text="${column.createInFlag}"></td>
                     <td th:text="${column.createCompareFlag}"></td>
+                    <td th:text="${column.createCntDistInGroupbyFlag}"></td>
+                    <td th:text="${column.createAvgInGroupbyFlag}"></td>
+                    <td th:text="${column.createSumInGroupbyFlag}"></td>
+                    <td th:text="${column.createMinInGroupbyFlag}"></td>
+                    <td th:text="${column.createMaxInGroupbyFlag}"></td>
                     <td class="text-center">
                         <a th:href="@{'/web/conf/version/' + ${table.versionId} + '/table/' + ${table.id}  + '/column/update/' + ${column.id} + '/to'}">修改</a>
                         &nbsp;

@@ -5,10 +5,12 @@
  - 修订历史：
  ===================================================
   修改人：jinlong.hao
-  修改时间：2019-08-11
+  修改时间：2019-08-16
   修改类型：修改库表
   修改内容：
     - 修改表信息：_eppdev_table_log
+    - 修改字段:table_id
+    - 修改字段:author_name
  ===================================================
 ================================================= -->
 
@@ -22,11 +24,11 @@
         a.author_name as authorName,
         a.oper_type as operType,
         a.oper_content as operContent,
-        a.create_date as createDate,
-        a.update_date as updateDate,
-        a.create_by as createBy,
-        a.update_by as updateBy,
         a.remarks as remarks,
+        a.create_date as createDate,
+        a.create_by as createBy,
+        a.update_date as updateDate,
+        a.update_by as updateBy,
         a.del_flag as delFlag,
     </sql>
 
@@ -38,11 +40,11 @@
             author_name,
             oper_type,
             oper_content,
-            create_date,
-            update_date,
-            create_by,
-            update_by,
             remarks,
+            create_date,
+            create_by,
+            update_date,
+            update_by,
             del_flag,
         </trim>
         )
@@ -53,11 +55,11 @@
             #{authorName},
             #{operType},
             #{operContent},
-            #{createDate},
-            #{updateDate},
-            #{createBy},
-            #{updateBy},
             #{remarks},
+            #{createDate},
+            #{createBy},
+            #{updateDate},
+            #{updateBy},
             #{delFlag},
         </trim>
         )
@@ -85,16 +87,8 @@
         </set>
         <where>
             <if test="id != null and id != ''">and a.id=#{id}</if>
-            <if test="_inIdList != null and _inIdList.length > 0">
-                and a.id in
-                <foreach collection="_inIdList" item="_item" separator="," open="(" close=")">
-                    #{_item}
-                </foreach>
-            </if>
             <if test="tableId != null and tableId != ''">and a.table_id=#{tableId}</if>
             <if test="authorName != null and authorName != ''">and a.author_name=#{authorName}</if>
-            <if test="createBy != null and createBy != ''">and a.create_by=#{createBy}</if>
-            <if test="updateBy != null and updateBy != ''">and a.update_by=#{updateBy}</if>
             <if test="delFlag != null">and a.del_flag=#{delFlag}</if>
                 and a.del_flag = 0
         </where>
@@ -108,11 +102,11 @@
             <if test="authorName != null and authorName != ''">a.author_name = #{authorName},</if>
             <if test="operType != null and operType != ''">a.oper_type = #{operType},</if>
             <if test="operContent != null and operContent != ''">a.oper_content = #{operContent},</if>
-            <if test="createDate != null">a.create_date = #{createDate},</if>
-            <if test="updateDate != null">a.update_date = #{updateDate},</if>
-            <if test="createBy != null and createBy != ''">a.create_by = #{createBy},</if>
-            <if test="updateBy != null and updateBy != ''">a.update_by = #{updateBy},</if>
             <if test="remarks != null and remarks != ''">a.remarks = #{remarks},</if>
+            <if test="createDate != null">a.create_date = #{createDate},</if>
+            <if test="createBy != null and createBy != ''">a.create_by = #{createBy},</if>
+            <if test="updateDate != null">a.update_date = #{updateDate},</if>
+            <if test="updateBy != null and updateBy != ''">a.update_by = #{updateBy},</if>
             <if test="delFlag != null">a.del_flag = #{delFlag},</if>
         </set>
         <where>
@@ -145,16 +139,8 @@
         <include refid="cn.eppdev.jee.conf.dao.EppdevTableLogDao.customRefJoin"/>
         <where>
             <if test="id != null and id != ''">and a.id=#{id}</if>
-            <if test="_inIdList != null and _inIdList.length > 0">
-                and a.id in
-                <foreach collection="_inIdList" item="_item" separator="," open="(" close=")">
-                    #{_item}
-                </foreach>
-            </if>
             <if test="tableId != null and tableId != ''">and a.table_id=#{tableId}</if>
             <if test="authorName != null and authorName != ''">and a.author_name=#{authorName}</if>
-            <if test="createBy != null and createBy != ''">and a.create_by=#{createBy}</if>
-            <if test="updateBy != null and updateBy != ''">and a.update_by=#{updateBy}</if>
             <if test="delFlag != null">and a.del_flag=#{delFlag}</if>
                 and a.del_flag = 0
             <if test="_customWhere != null and _customWhere != ''">${_customWhere}</if>
@@ -166,6 +152,45 @@
             <otherwise>
                 order by a.update_date desc
             </otherwise>
+        </choose>
+    </select>
+
+
+    <select id="listGroupBy" resultType="cn.eppdev.jee.conf.entity.EppdevTableLog">
+        select
+        <trim suffixOverrides=",">
+            count(1) as "_count",
+            <if test="_groupByList != null and _groupByList.length > 0">
+            <foreach collection="_groupByList" item="_item">
+            a.${_item.columnName} as ${_item.propertyName},
+            </foreach>
+            </if>
+            <include refid="cn.eppdev.jee.conf.dao.EppdevTableLogDao.customRefGroupByColumns"/>
+        </trim>
+        from _eppdev_table_log a
+        <include refid="cn.eppdev.jee.conf.dao.EppdevTableLogDao.customRefGroupByJoin"/>
+        <where>
+            <if test="id != null and id != ''">and a.id=#{id}</if>
+            <if test="tableId != null and tableId != ''">and a.table_id=#{tableId}</if>
+            <if test="authorName != null and authorName != ''">and a.author_name=#{authorName}</if>
+            <if test="delFlag != null">and a.del_flag=#{delFlag}</if>
+                and a.del_flag = 0
+            <if test="_customWhere != null and _customWhere != ''">${_customWhere}</if>
+        </where>
+        group by
+        <trim suffixOverrides=",">
+            null,
+            <if test="_groupByList != null and _groupByList.length > 0">
+            <foreach collection="_groupByList" item="_item">
+            a.${_item.columnName},
+            </foreach>
+            </if>
+            <include refid="cn.eppdev.jee.conf.dao.EppdevTableLogDao.customRefGroupByColumns"/>
+        </trim>
+        <choose>
+            <when test="_orderBy != null and _orderBy != ''">
+                order by ${_orderBy}
+            </when>
         </choose>
     </select>
 

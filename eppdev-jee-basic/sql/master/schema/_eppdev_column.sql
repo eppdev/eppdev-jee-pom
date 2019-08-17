@@ -2,12 +2,13 @@
 -- 修订历史：
 -- ------------------------------------------------
 -- 修改人：jinlong.hao
--- 修改时间：2019-08-11
+-- 修改时间：2019-08-16
 -- 修改类型：修改库表
 -- 修改内容：
 --  - 修改表信息：_eppdev_column
+--  - 修改字段:table_id
+--  - 修改字段:column_name
 -- --------------------------------------------------
-
 
 create table _eppdev_column(
   id char(32) comment 'UUID, 唯一标识',
@@ -27,6 +28,11 @@ create table _eppdev_column(
   create_left_like_flag integer(10) comment '是否创建left like查询条件',
   create_in_flag integer(10) comment '是否创建in查询条件',
   create_compare_flag integer(10) comment '是否创建大于小于条件',
+  create_cnt_dist_in_groupby_flag integer(10) comment '在group中是否创建count distinct语句',
+  create_avg_in_groupby_flag integer(10) comment '是否在groupby查询中增加本字段的avg结果，0为否，1为是',
+  create_sum_in_groupby_flag integer(10) comment '是否创建sum结果在groupby语句中，0为否，1为是',
+  create_min_in_groupby_flag integer(10) comment '是否在GroupBy中针对本字段创建min结果，0为否，1为是',
+  create_max_in_groupby_flag integer(10) comment '是否在groupby语句中创建本字段的max属性，0为否，1为是',
   remarks varchar(255) comment '说明',
   create_date datetime(19) comment '创建时间',
   create_by varchar(32) comment '创建人',

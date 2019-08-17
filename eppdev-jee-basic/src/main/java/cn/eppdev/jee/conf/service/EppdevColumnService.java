@@ -25,8 +25,38 @@ public class EppdevColumnService extends _EppdevColumnService {
         if (entity.getOriginColumnId() == null || entity.getOriginColumnId().length() == 0) {
             entity.setOriginColumnId(entity.getId());
         }
-        if (entity.getPropertyName() == null || entity.getPropertyName().length() == 0){
+        if (entity.getPropertyName() == null || entity.getPropertyName().length() == 0) {
             entity.setPropertyName(NameUtils.getPropertyName(entity.getColumnName()));
+        }
+        if (entity.getCreateEqualFlag() == null) {
+            entity.setCreateEqualFlag(0);
+        }
+        if (entity.getCreateLikeFlag() == null) {
+            entity.setCreateLikeFlag(0);
+        }
+        if (entity.getCreateLeftLikeFlag() == null) {
+            entity.setCreateLeftLikeFlag(0);
+        }
+        if (entity.getCreateInFlag() == null) {
+            entity.setCreateInFlag(0);
+        }
+        if (entity.getCreateCompareFlag() == null) {
+            entity.setCreateCompareFlag(0);
+        }
+        if (entity.getCreateCntDistInGroupbyFlag() == null) {
+            entity.setCreateCntDistInGroupbyFlag(0);
+        }
+        if (entity.getCreateAvgInGroupbyFlag() == null) {
+            entity.setCreateAvgInGroupbyFlag(0);
+        }
+        if (entity.getCreateSumInGroupbyFlag() == null) {
+            entity.setCreateSumInGroupbyFlag(0);
+        }
+        if (entity.getCreateMinInGroupbyFlag() == null) {
+            entity.setCreateMinInGroupbyFlag(0);
+        }
+        if (entity.getCreateMaxInGroupbyFlag() == null) {
+            entity.setCreateMaxInGroupbyFlag(0);
         }
     }
 

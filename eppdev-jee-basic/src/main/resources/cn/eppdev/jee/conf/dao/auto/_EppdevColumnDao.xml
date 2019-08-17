@@ -5,10 +5,12 @@
  - 修订历史：
  ===================================================
   修改人：jinlong.hao
-  修改时间：2019-08-11
+  修改时间：2019-08-16
   修改类型：修改库表
   修改内容：
     - 修改表信息：_eppdev_column
+    - 修改字段:table_id
+    - 修改字段:column_name
  ===================================================
 ================================================= -->
 
@@ -34,6 +36,11 @@
         a.create_left_like_flag as createLeftLikeFlag,
         a.create_in_flag as createInFlag,
         a.create_compare_flag as createCompareFlag,
+        a.create_cnt_dist_in_groupby_flag as createCntDistInGroupbyFlag,
+        a.create_avg_in_groupby_flag as createAvgInGroupbyFlag,
+        a.create_sum_in_groupby_flag as createSumInGroupbyFlag,
+        a.create_min_in_groupby_flag as createMinInGroupbyFlag,
+        a.create_max_in_groupby_flag as createMaxInGroupbyFlag,
         a.remarks as remarks,
         a.create_date as createDate,
         a.create_by as createBy,
@@ -62,6 +69,11 @@
             create_left_like_flag,
             create_in_flag,
             create_compare_flag,
+            create_cnt_dist_in_groupby_flag,
+            create_avg_in_groupby_flag,
+            create_sum_in_groupby_flag,
+            create_min_in_groupby_flag,
+            create_max_in_groupby_flag,
             remarks,
             create_date,
             create_by,
@@ -89,6 +101,11 @@
             #{createLeftLikeFlag},
             #{createInFlag},
             #{createCompareFlag},
+            #{createCntDistInGroupbyFlag},
+            #{createAvgInGroupbyFlag},
+            #{createSumInGroupbyFlag},
+            #{createMinInGroupbyFlag},
+            #{createMaxInGroupbyFlag},
             #{remarks},
             #{createDate},
             #{createBy},
@@ -122,6 +139,7 @@
         <where>
             <if test="id != null and id != ''">and a.id=#{id}</if>
             <if test="tableId != null and tableId != ''">and a.table_id=#{tableId}</if>
+            <if test="columnName != null and columnName != ''">and a.column_name=#{columnName}</if>
             <if test="delFlag != null">and a.del_flag=#{delFlag}</if>
                 and a.del_flag = 0
         </where>
@@ -147,6 +165,11 @@
             <if test="createLeftLikeFlag != null">a.create_left_like_flag = #{createLeftLikeFlag},</if>
             <if test="createInFlag != null">a.create_in_flag = #{createInFlag},</if>
             <if test="createCompareFlag != null">a.create_compare_flag = #{createCompareFlag},</if>
+            <if test="createCntDistInGroupbyFlag != null">a.create_cnt_dist_in_groupby_flag = #{createCntDistInGroupbyFlag},</if>
+            <if test="createAvgInGroupbyFlag != null">a.create_avg_in_groupby_flag = #{createAvgInGroupbyFlag},</if>
+            <if test="createSumInGroupbyFlag != null">a.create_sum_in_groupby_flag = #{createSumInGroupbyFlag},</if>
+            <if test="createMinInGroupbyFlag != null">a.create_min_in_groupby_flag = #{createMinInGroupbyFlag},</if>
+            <if test="createMaxInGroupbyFlag != null">a.create_max_in_groupby_flag = #{createMaxInGroupbyFlag},</if>
             <if test="remarks != null and remarks != ''">a.remarks = #{remarks},</if>
             <if test="createDate != null">a.create_date = #{createDate},</if>
             <if test="createBy != null and createBy != ''">a.create_by = #{createBy},</if>
@@ -197,6 +220,45 @@
             <otherwise>
                 order by a.update_date desc
             </otherwise>
+        </choose>
+    </select>
+
+
+    <select id="listGroupBy" resultType="cn.eppdev.jee.conf.entity.EppdevColumn">
+        select
+        <trim suffixOverrides=",">
+            count(1) as "_count",
+            <if test="_groupByList != null and _groupByList.length > 0">
+            <foreach collection="_groupByList" item="_item">
+            a.${_item.columnName} as ${_item.propertyName},
+            </foreach>
+            </if>
+            <include refid="cn.eppdev.jee.conf.dao.EppdevColumnDao.customRefGroupByColumns"/>
+        </trim>
+        from _eppdev_column a
+        <include refid="cn.eppdev.jee.conf.dao.EppdevColumnDao.customRefGroupByJoin"/>
+        <where>
+            <if test="id != null and id != ''">and a.id=#{id}</if>
+            <if test="tableId != null and tableId != ''">and a.table_id=#{tableId}</if>
+            <if test="columnName != null and columnName != ''">and a.column_name=#{columnName}</if>
+            <if test="delFlag != null">and a.del_flag=#{delFlag}</if>
+                and a.del_flag = 0
+            <if test="_customWhere != null and _customWhere != ''">${_customWhere}</if>
+        </where>
+        group by
+        <trim suffixOverrides=",">
+            null,
+            <if test="_groupByList != null and _groupByList.length > 0">
+            <foreach collection="_groupByList" item="_item">
+            a.${_item.columnName},
+            </foreach>
+            </if>
+            <include refid="cn.eppdev.jee.conf.dao.EppdevColumnDao.customRefGroupByColumns"/>
+        </trim>
+        <choose>
+            <when test="_orderBy != null and _orderBy != ''">
+                order by ${_orderBy}
+            </when>
         </choose>
     </select>
 

@@ -1,6 +1,6 @@
 /* FileName: BasicEntity.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
- * License: Anti-996 License 1.0
+ * Copyright EPPDEV.CN, All Rights Preserved!
+ * License: Anti-996 License V1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
 
@@ -49,6 +49,9 @@ public class BasicEntity {
 
     // remarks对应的属性
     private String remarks;
+
+    // count属性，用于groupBy计算的结果
+    private Integer _count;
 
     public String getId() {
         return id;
@@ -104,6 +107,14 @@ public class BasicEntity {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    public Integer get_count() {
+        return _count;
+    }
+
+    public void set_count(Integer _count) {
+        this._count = _count;
     }
 
     @Override

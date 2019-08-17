@@ -1,5 +1,5 @@
 /* FileName: _EppdevVersion.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright EPPDEV.CN, All Rights Preserved!
  * License: Anti-996 License V1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -8,15 +8,17 @@
  * 修订历史：
  * *************************************************
   修改人：jinlong.hao
-  修改时间：2019-08-11
+  修改时间：2019-08-16
   修改类型：修改库表
   修改内容：
     - 修改表信息：_eppdev_version
+    - 修改字段:version_name
 ----------------------------------------------------
 ************************************************** */
 
 package cn.eppdev.jee.conf.entity.auto;
 
+import cn.eppdev.jee.commons.entity.ColumnEntity;
 import cn.eppdev.jee.commons.entity.BasicEntity;
 
 /**
@@ -32,6 +34,7 @@ public class _EppdevVersion extends BasicEntity {
     public static final String COLUMN_VERSION_NAME_ = "version_name";
     public static final String COLUMN_VERSION_NAME_ASC_ = "version_name asc";
     public static final String COLUMN_VERSION_NAME_DESC_ = "version_name desc";
+    public static final ColumnEntity COLUMN_ENTITY_VERSION_NAME_ = new ColumnEntity("version_name", "versionName");
 
 
 
@@ -47,7 +50,7 @@ public class _EppdevVersion extends BasicEntity {
      * **********************************************/
     // getters for version_name
     public String getVersionName() {
-        return versionName;
+        return this.versionName;
     }
 
 

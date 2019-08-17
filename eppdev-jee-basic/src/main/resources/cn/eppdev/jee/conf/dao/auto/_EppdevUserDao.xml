@@ -5,10 +5,13 @@
  - 修订历史：
  ===================================================
   修改人：jinlong.hao
-  修改时间：2019-08-11
+  修改时间：2019-08-16
   修改类型：修改库表
   修改内容：
     - 修改表信息：_eppdev_user
+    - 修改字段:login_name
+    - 修改字段:update_by
+    - 修改字段:update_by
  ===================================================
 ================================================= -->
 
@@ -140,6 +143,44 @@
             <otherwise>
                 order by a.update_date desc
             </otherwise>
+        </choose>
+    </select>
+
+
+    <select id="listGroupBy" resultType="cn.eppdev.jee.conf.entity.EppdevUser">
+        select
+        <trim suffixOverrides=",">
+            count(1) as "_count",
+            <if test="_groupByList != null and _groupByList.length > 0">
+            <foreach collection="_groupByList" item="_item">
+            a.${_item.columnName} as ${_item.propertyName},
+            </foreach>
+            </if>
+            <include refid="cn.eppdev.jee.conf.dao.EppdevUserDao.customRefGroupByColumns"/>
+        </trim>
+        from _eppdev_user a
+        <include refid="cn.eppdev.jee.conf.dao.EppdevUserDao.customRefGroupByJoin"/>
+        <where>
+            <if test="id != null and id != ''">and a.id=#{id}</if>
+            <if test="loginName != null and loginName != ''">and a.login_name=#{loginName}</if>
+            <if test="delFlag != null">and a.del_flag=#{delFlag}</if>
+                and a.del_flag = 0
+            <if test="_customWhere != null and _customWhere != ''">${_customWhere}</if>
+        </where>
+        group by
+        <trim suffixOverrides=",">
+            null,
+            <if test="_groupByList != null and _groupByList.length > 0">
+            <foreach collection="_groupByList" item="_item">
+            a.${_item.columnName},
+            </foreach>
+            </if>
+            <include refid="cn.eppdev.jee.conf.dao.EppdevUserDao.customRefGroupByColumns"/>
+        </trim>
+        <choose>
+            <when test="_orderBy != null and _orderBy != ''">
+                order by ${_orderBy}
+            </when>
         </choose>
     </select>
 

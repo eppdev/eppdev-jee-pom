@@ -76,6 +76,17 @@
                 <![CDATA[生成本工程Entity类的父类]]>
             </fileInfo>
         </initFile>
+        <initFile fileName="ColumnEntity.java" type="basic">
+            <filePathTemplate>
+                <![CDATA[${PROJECT_PATH}/src/main/java/${BASIC_PACKAGE_NAME?replace('.','/')}/commons/entity/ColumnEntity.java]]>
+            </filePathTemplate>
+            <contentTemplatePath>
+                <![CDATA[/eppdev-jee/template/entity/column_entity.ftl]]>
+            </contentTemplatePath>
+            <fileInfo>
+                <![CDATA[生成基础的ColumnEntity属性，用于构建GroupByParam]]>
+            </fileInfo>
+        </initFile>
         <initFile fileName="BasicService.java" type="basic">
             <filePathTemplate>
                 <![CDATA[${PROJECT_PATH}/src/main/java/${BASIC_PACKAGE_NAME?replace('.','/')}/commons/service/BasicService.java]]>

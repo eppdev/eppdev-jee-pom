@@ -5,10 +5,12 @@
  - 修订历史：
  ===================================================
   修改人：jinlong.hao
-  修改时间：2019-08-11
+  修改时间：2019-08-16
   修改类型：修改库表
   修改内容：
     - 修改表信息：_eppdev_table
+    - 修改字段:table_name
+    - 修改字段:version_id
  ===================================================
 ================================================= -->
 
@@ -22,6 +24,7 @@
         a.table_comment as tableComment,
         a.module_name as moduleName,
         a.entity_name as entityName,
+        a.entity_name_upper as entityNameUpper,
         a.table_type as tableType,
         a.version_id as versionId,
         a.create_sql as createSql,
@@ -42,6 +45,7 @@
             table_comment,
             module_name,
             entity_name,
+            entity_name_upper,
             table_type,
             version_id,
             create_sql,
@@ -61,6 +65,7 @@
             #{tableComment},
             #{moduleName},
             #{entityName},
+            #{entityNameUpper},
             #{tableType},
             #{versionId},
             #{createSql},
@@ -97,6 +102,7 @@
         </set>
         <where>
             <if test="id != null and id != ''">and a.id=#{id}</if>
+            <if test="tableName != null and tableName != ''">and a.table_name=#{tableName}</if>
             <if test="versionId != null and versionId != ''">and a.version_id=#{versionId}</if>
             <if test="delFlag != null">and a.del_flag=#{delFlag}</if>
                 and a.del_flag = 0
@@ -111,6 +117,7 @@
             <if test="tableComment != null and tableComment != ''">a.table_comment = #{tableComment},</if>
             <if test="moduleName != null and moduleName != ''">a.module_name = #{moduleName},</if>
             <if test="entityName != null and entityName != ''">a.entity_name = #{entityName},</if>
+            <if test="entityNameUpper != null and entityNameUpper != ''">a.entity_name_upper = #{entityNameUpper},</if>
             <if test="tableType != null">a.table_type = #{tableType},</if>
             <if test="versionId != null and versionId != ''">a.version_id = #{versionId},</if>
             <if test="createSql != null and createSql != ''">a.create_sql = #{createSql},</if>
@@ -165,6 +172,45 @@
             <otherwise>
                 order by a.update_date desc
             </otherwise>
+        </choose>
+    </select>
+
+
+    <select id="listGroupBy" resultType="cn.eppdev.jee.conf.entity.EppdevTable">
+        select
+        <trim suffixOverrides=",">
+            count(1) as "_count",
+            <if test="_groupByList != null and _groupByList.length > 0">
+            <foreach collection="_groupByList" item="_item">
+            a.${_item.columnName} as ${_item.propertyName},
+            </foreach>
+            </if>
+            <include refid="cn.eppdev.jee.conf.dao.EppdevTableDao.customRefGroupByColumns"/>
+        </trim>
+        from _eppdev_table a
+        <include refid="cn.eppdev.jee.conf.dao.EppdevTableDao.customRefGroupByJoin"/>
+        <where>
+            <if test="id != null and id != ''">and a.id=#{id}</if>
+            <if test="tableName != null and tableName != ''">and a.table_name=#{tableName}</if>
+            <if test="versionId != null and versionId != ''">and a.version_id=#{versionId}</if>
+            <if test="delFlag != null">and a.del_flag=#{delFlag}</if>
+                and a.del_flag = 0
+            <if test="_customWhere != null and _customWhere != ''">${_customWhere}</if>
+        </where>
+        group by
+        <trim suffixOverrides=",">
+            null,
+            <if test="_groupByList != null and _groupByList.length > 0">
+            <foreach collection="_groupByList" item="_item">
+            a.${_item.columnName},
+            </foreach>
+            </if>
+            <include refid="cn.eppdev.jee.conf.dao.EppdevTableDao.customRefGroupByColumns"/>
+        </trim>
+        <choose>
+            <when test="_orderBy != null and _orderBy != ''">
+                order by ${_orderBy}
+            </when>
         </choose>
     </select>
 

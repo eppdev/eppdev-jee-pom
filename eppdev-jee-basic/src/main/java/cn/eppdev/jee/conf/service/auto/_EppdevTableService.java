@@ -1,5 +1,5 @@
 /* FileName: EppdevTableService.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright EPPDEV.CN, All Rights Preserved!
  * License: Anti-996 License V1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -8,10 +8,12 @@
  * 修订历史：
  * *************************************************
   修改人：jinlong.hao
-  修改时间：2019-08-11
+  修改时间：2019-08-16
   修改类型：修改库表
   修改内容：
     - 修改表信息：_eppdev_table
+    - 修改字段:table_name
+    - 修改字段:version_id
 ----------------------------------------------------
 ************************************************** */
 
@@ -42,19 +44,6 @@ public abstract class _EppdevTableService extends BasicService<EppdevTable, Eppd
     @Override
     public boolean exists(EppdevTable entity) {
 
-        // 判断逻辑主键
-        EppdevTableParam param = new EppdevTableParam();
-        param.setTableName(entity.getTableName());
-        param.setVersionId(entity.getVersionId());
-        param.set_pageNum(1);
-        param.set_pageSize(1);
-        PageInfo<EppdevTable> pageInfo = list(param);
-        if (pageInfo.getTotal() > 0) {
-            if (pageInfo.getList().get(0).getId().equals(entity.getId())){
-                return false;
-            }
-            return true;
-        }
 
         return false;
     }

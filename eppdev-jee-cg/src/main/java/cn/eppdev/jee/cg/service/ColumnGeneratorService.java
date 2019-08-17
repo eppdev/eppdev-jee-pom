@@ -38,10 +38,7 @@ public class ColumnGeneratorService {
         columnId.setJavaType("String");
         columnId.setOriginColumnId(null);
         columnId.setCreateEqualFlag(1);
-        columnId.setCreateLikeFlag(0);
-        columnId.setCreateLeftLikeFlag(0);
         columnId.setCreateInFlag(1);
-        columnId.setCreateCompareFlag(0);
         columnId.setRemarks(null);
         columnId.setCreateBy("eppdev");
         columnId.setUpdateBy("eppdev");
@@ -61,11 +58,6 @@ public class ColumnGeneratorService {
         columnCreateDate.setPropertyName("createDate");
         columnCreateDate.setJavaType("java.utils.Date");
         columnCreateDate.setOriginColumnId(null);
-        columnCreateDate.setCreateEqualFlag(0);
-        columnCreateDate.setCreateLikeFlag(0);
-        columnCreateDate.setCreateLeftLikeFlag(0);
-        columnCreateDate.setCreateInFlag(0);
-        columnCreateDate.setCreateCompareFlag(0);
         columnCreateDate.setRemarks(null);
         columnCreateDate.setCreateBy("eppdev");
         columnCreateDate.setUpdateBy("eppdev");
@@ -86,11 +78,6 @@ public class ColumnGeneratorService {
         columnUpdateDate.setPropertyName("updateDate");
         columnUpdateDate.setJavaType("java.utils.Date");
         columnUpdateDate.setOriginColumnId(null);
-        columnUpdateDate.setCreateEqualFlag(0);
-        columnUpdateDate.setCreateLikeFlag(0);
-        columnUpdateDate.setCreateLeftLikeFlag(0);
-        columnUpdateDate.setCreateInFlag(0);
-        columnUpdateDate.setCreateCompareFlag(0);
         columnUpdateDate.setRemarks(null);
         columnUpdateDate.setCreateBy("eppdev");
         columnUpdateDate.setUpdateBy("eppdev");
@@ -111,10 +98,6 @@ public class ColumnGeneratorService {
         columnCreateBy.setJavaType("String");
         columnCreateBy.setOriginColumnId(null);
         columnCreateBy.setCreateEqualFlag(1);
-        columnCreateBy.setCreateLikeFlag(0);
-        columnCreateBy.setCreateLeftLikeFlag(0);
-        columnCreateBy.setCreateInFlag(0);
-        columnCreateBy.setCreateCompareFlag(0);
         columnCreateBy.setRemarks(null);
         columnCreateBy.setCreateBy("eppdev");
         columnCreateBy.setUpdateBy("eppdev");
@@ -135,10 +118,6 @@ public class ColumnGeneratorService {
         columnUpdateBy.setJavaType("String");
         columnUpdateBy.setOriginColumnId(null);
         columnUpdateBy.setCreateEqualFlag(1);
-        columnUpdateBy.setCreateLikeFlag(0);
-        columnUpdateBy.setCreateLeftLikeFlag(0);
-        columnUpdateBy.setCreateInFlag(0);
-        columnUpdateBy.setCreateCompareFlag(0);
         columnUpdateBy.setRemarks(null);
         columnUpdateBy.setCreateBy("eppdev");
         columnUpdateBy.setUpdateBy("eppdev");
@@ -158,11 +137,6 @@ public class ColumnGeneratorService {
         columnRemarks.setPropertyName("remarks");
         columnRemarks.setJavaType("String");
         columnRemarks.setOriginColumnId(null);
-        columnRemarks.setCreateEqualFlag(0);
-        columnRemarks.setCreateLikeFlag(0);
-        columnRemarks.setCreateLeftLikeFlag(0);
-        columnRemarks.setCreateInFlag(0);
-        columnRemarks.setCreateCompareFlag(0);
         columnRemarks.setRemarks(null);
         columnRemarks.setCreateBy("eppdev");
         columnRemarks.setUpdateBy("eppdev");

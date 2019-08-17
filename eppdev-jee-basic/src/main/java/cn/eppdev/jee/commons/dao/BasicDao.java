@@ -1,6 +1,6 @@
 /* FileName: BasicDao.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
- * License: Anti-996 License 1.0
+ * Copyright EPPDEV.CN, All Rights Preserved!
+ * License: Anti-996 License V1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
 
@@ -74,6 +74,21 @@ public interface BasicDao<T extends BasicEntity, P extends BasicParam> {
      * @return 返回的结果列表
      */
     List<T> list(P param);
+
+    /**
+     * 根据Group By查询数据，查询条件包括（以name字段为例）：<br/>
+     * <ul>
+     *     <li>1. 等于，如name非空，则增加条件：name={name}</li>
+     *     <li>2. 小于等于，如_maxName非空，则增加条件：name<=_maxName </li>
+     *     <li>3. 大于等于，如_minName非空，则增加条件：name>=_minName</li>
+     *     <li>4. like，如_likeName非空，则增加条件：name like '%'+_likeName+'%'</li>
+     *     <li>5. left like, 如_leftLikeName非空，则增加条件： name like _leftLikeName+'%'</li>
+     *     <li>6. in, 如_inNameList，则增加条件： name in (_inNameList[0], ... _inNameList[n])</li>
+     * </ul>
+     * @param param 参数对象
+     * @return 返回的结果列表
+     */
+    List<T> listGroupBy(P param);
 
     /**
      * <b>Deprecated: 使用PageHelper后请使用#listBy方法代替</b><br />
