@@ -74,11 +74,11 @@ public class BasicParam {
 
 
     public void buildBroupBy(ColumnEntity... columnEntities) {
-        if (groupByList == null) {
-            groupByList = new ArrayList<>();
+        if (_groupByList == null) {
+            _groupByList = new ArrayList<>();
         }
         for (ColumnEntity entity: columnEntities) {
-            groupByList.add(entity);
+            _groupByList.add(entity);
         }
     }
 
