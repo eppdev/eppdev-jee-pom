@@ -29,7 +29,7 @@ public class BasicParam {
 
     private Integer _pageSize;
 
-    private List<ColumnEntity> groupByList;
+    private List<ColumnEntity> _groupByList;
 
     public String get_orderBy() {
         return _orderBy;
@@ -64,12 +64,12 @@ public class BasicParam {
     }
 
 
-    public List<ColumnEntity> getGroupByList() {
-        return groupByList;
+    public List<ColumnEntity> get_groupByList() {
+        return _groupByList;
     }
 
-    public void setGroupByList(List<ColumnEntity> groupByList) {
-        this.groupByList = groupByList;
+    public void set_groupByList(List<ColumnEntity> _groupByList) {
+        this._groupByList = _groupByList;
     }
 
 

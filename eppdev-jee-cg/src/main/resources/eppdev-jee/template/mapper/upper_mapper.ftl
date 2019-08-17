@@ -230,9 +230,11 @@
         select
         <trim suffixOverrides=",">
             count(1) as "_count",
-            <foreach collection="groupByList" item="_item">
+            <if test="_groupByList != null and _groupByList.length > 0">
+            <foreach collection="_groupByList" item="_item">
             a.${r"${"}_item.columnName${r"}"} as ${r"${"}_item.propertyName${r"}"},
             </foreach>
+            </if>
             <#list columnList as column>
             <#if column.createCntDistInGroupbyFlag?exists && column.createCntDistInGroupbyFlag == 1>
             count(distinct ${column.columnName}) as "_cntDist${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}",
@@ -288,9 +290,11 @@
         group by
         <trim suffixOverrides=",">
             null,
-            <foreach collection="groupByList" item="_item">
+            <if test="_groupByList != null and _groupByList.length > 0">
+            <foreach collection="_groupByList" item="_item">
             a.${r"${"}_item.columnName${r"}"},
             </foreach>
+            </if>
             <include refid="${basicConf.BASIC_PACKAGE_NAME}<#if moduleName?exists && moduleName?trim?length &gt; 0>.${moduleName?trim}</#if>.dao.${entityName}Dao.customRefGroupByColumns"/>
         </trim>
         <choose>
