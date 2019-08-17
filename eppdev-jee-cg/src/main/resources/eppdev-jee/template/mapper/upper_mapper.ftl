@@ -214,6 +214,93 @@
     </select>
 
 
+    <select id="listGroupBy" resultType="${basicConf.BASIC_PACKAGE_NAME}<#if moduleName?exists && moduleName?trim?length &gt; 0>.${moduleName?trim}</#if>.entity.${entityName}">
+        <#list columnList as column>
+        <#if column.createLikeFlag == 1>
+        <if test="_like${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != null and _like${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} !=''">
+            <bind name="_bind_like_${column.columnName}" value="'%' + _like${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} + '%'"></bind>
+        </if>
+        </#if>
+        <#if column.createLeftLikeFlag == 1>
+        <if test="_leftLike${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != null and _leftLike${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} !=''">
+            <bind name="_bind_left_like_${column.columnName}" value="_like${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} + '%'"></bind>
+        </if>
+        </#if>
+        </#list>
+        select
+        <trim suffixOverrides=",">
+            count(1) as "_count",
+            <foreach collection="groupByList" item="_item">
+            a.${r"${"}_item.columnName${r"}"} as ${r"${"}_item.propertyName${r"}"},
+            </foreach>
+            <#list columnList as column>
+            <#if column.createCntDistInGroupbyFlag?exists && column.createCntDistInGroupbyFlag == 1>
+            count(distinct ${column.columnName}) as "_cntDist${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}",
+            </#if>
+            <#if column.createAvgInGroupbyFlag?exists && column.createAvgInGroupbyFlag == 1>
+            avg(${column.columnName}) as "_avg${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}",
+            </#if>
+            <#if column.createSumInGroupbyFlag?exists && column.createSumInGroupbyFlag == 1>
+            sum(${column.columnName}) as "_sum${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}",
+            </#if>
+            <#if column.createMinInGroupbyFlag?exists && column.createMinInGroupbyFlag == 1>
+            min(${column.columnName}) as "_min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}",
+            </#if>
+            <#if column.createMaxInGroupbyFlag?exists && column.createMaxInGroupbyFlag == 1>
+            max(${column.columnName}) as "_max${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}",
+            </#if>
+            </#list>
+            <include refid="${basicConf.BASIC_PACKAGE_NAME}<#if moduleName?exists && moduleName?trim?length &gt; 0>.${moduleName?trim}</#if>.dao.${entityName}Dao.customRefGroupByColumns"/>
+        </trim>
+        from ${tableName} a
+        <include refid="${basicConf.BASIC_PACKAGE_NAME}<#if moduleName?exists && moduleName?trim?length &gt; 0>.${moduleName?trim}</#if>.dao.${entityName}Dao.customRefGroupByJoin"/>
+        <where>
+            <#list columnList as column>
+            <#if column.createEqualFlag == 1 || column.logicKeyFlag == 1>
+            <if test="${column.propertyName} != null<#if column.javaType=='String'> and ${column.propertyName} != ''</#if>">and a.${column.columnName}=${r"#{"}${column.propertyName}${r"}"}</if>
+            </#if>
+            <#if column.createInFlag == 1>
+            <if test="_in${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}List != null and _in${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}List.length > 0">
+                and a.${column.columnName} in
+                <foreach collection="_in${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}List" item="_item" separator="," open="(" close=")">
+                    ${r"#{"}_item${r"}"}
+                </foreach>
+            </if>
+            </#if>
+            <#if column.createCompareFlag == 1>
+            <if test="_min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != null<#if column.javaType == 'String'> and _min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != ''</#if>">and a.${column.columnName} &gt;= ${r"#{"}_min${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}${r"}"}</if>
+            <if test="_max${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != null<#if column.javaType == 'String'> and _max${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != ''</#if>">and a.${column.columnName} &lt;= ${r"#{"}_max${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)}${r"}"}</if>
+            </#if>
+            <#if column.createLikeFlag == 1>
+            <if test="_like${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != null and _like${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != ''">a.${column.columnName} like ${r"#{"}_bind_like_${column.columnName}${r"}"}</if>
+            </#if>
+            <#if column.createLeftLikeFlag == 1>
+            <if test="_leftLike${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != null and _leftLike${column.propertyName?substring(0,1)?upper_case}${column.propertyName?substring(1)} != ''">a.${column.columnName} like ${r"#{"}_bind_left_like_${column.columnName}${r"}"}</if>
+            </#if>
+            </#list>
+            <#list columnList as column>
+            <#if column.columnName == "del_flag">
+                and a.del_flag = 0
+            </#if>
+            </#list>
+            <if test="_customWhere != null and _customWhere != ''">${r"${"}_customWhere}</if>
+        </where>
+        group by
+        <trim suffixOverrides=",">
+            null,
+            <foreach collection="groupByList" item="_item">
+            a.${r"${"}_item.columnName${r"}"},
+            </foreach>
+            <include refid="${basicConf.BASIC_PACKAGE_NAME}<#if moduleName?exists && moduleName?trim?length &gt; 0>.${moduleName?trim}</#if>.dao.${entityName}Dao.customRefGroupByColumns"/>
+        </trim>
+        <choose>
+            <when test="_orderBy != null and _orderBy != ''">
+                order by ${r"${"}_orderBy${r"}"}
+            </when>
+        </choose>
+    </select>
+
+
 
     <delete id="realDelete">
         delete from ${tableName} a

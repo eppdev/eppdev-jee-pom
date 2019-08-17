@@ -6,10 +6,14 @@
 
 package ${BASIC_PACKAGE_NAME}.commons.param;
 
+import ${BASIC_PACKAGE_NAME}.commons.entity.ColumnEntity;
 import ${BASIC_PACKAGE_NAME}.utils.JSONUtils;
 import ${BASIC_PACKAGE_NAME}.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author ${AUTHOR_NAME}
@@ -24,6 +28,8 @@ public class BasicParam {
     private Integer _pageNum;
 
     private Integer _pageSize;
+
+    private List<ColumnEntity> groupByList;
 
     public String get_orderBy() {
         return _orderBy;
@@ -55,6 +61,25 @@ public class BasicParam {
 
     public void set_pageSize(Integer _pageSize) {
         this._pageSize = _pageSize;
+    }
+
+
+    public List<ColumnEntity> getGroupByList() {
+        return groupByList;
+    }
+
+    public void setGroupByList(List<ColumnEntity> groupByList) {
+        this.groupByList = groupByList;
+    }
+
+
+    public void buildBroupBy(ColumnEntity... columnEntities) {
+        if (groupByList == null) {
+            groupByList = new ArrayList<>();
+        }
+        for (ColumnEntity entity: columnEntities) {
+            groupByList.add(entity);
+        }
     }
 
     public void buildOrderBy(String... orderbyStrs) {

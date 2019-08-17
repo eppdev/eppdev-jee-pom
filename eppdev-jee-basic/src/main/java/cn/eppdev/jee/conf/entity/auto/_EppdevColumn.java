@@ -11,7 +11,35 @@
   修改时间：2019-08-11
   修改类型：修改库表
   修改内容：
+    - 修改字段:create_count_distinct_in_groupby_flag
+    - 修改字段:create_cnt_dist_in_groupby_flag
+----------------------------------------------------
+  修改人：jinlong.hao
+  修改时间：2019-08-11
+  修改类型：修改库表
+  修改内容：
+    - 修改字段:create_sum_in_groupby_flag
+    - 修改字段:create_min_in_groupby_flag
+    - 修改字段:group_by_param_flag
     - 修改表信息：_eppdev_column
+    - 修改字段:group_by_param_flag
+    - 修改字段:group_by_param_flag
+    - 修改字段:create_sum_in_groupby_flag
+    - 修改字段:create_min_in_groupby_flag
+----------------------------------------------------
+  修改人：jinlong.hao
+  修改时间：2019-08-11
+  修改类型：修改库表
+  修改内容：
+    - 修改表信息：_eppdev_column
+    - 修改字段:group_by_param_flag
+    - 修改字段:group_by_param_flag
+    - 修改字段:create_sum_in_groupby_flag
+    - 修改字段:create_sum_in_groupby_flag
+    - 修改字段:create_sum_in_groupby_flag
+    - 修改字段:group_by_param_flag
+    - 修改字段:group_by_param_flag
+    - 修改字段:group_by_param_flag
 ----------------------------------------------------
 ************************************************** */
 
@@ -108,6 +136,31 @@ public class _EppdevColumn extends BasicEntity {
     public static final String COLUMN_CREATE_COMPARE_FLAG_ASC_ = "create_compare_flag asc";
     public static final String COLUMN_CREATE_COMPARE_FLAG_DESC_ = "create_compare_flag desc";
 
+    // static properties for create_cnt_dist_in_groupby_flag
+    public static final String COLUMN_CREATE_CNT_DIST_IN_GROUPBY_FLAG_ = "create_cnt_dist_in_groupby_flag";
+    public static final String COLUMN_CREATE_CNT_DIST_IN_GROUPBY_FLAG_ASC_ = "create_cnt_dist_in_groupby_flag asc";
+    public static final String COLUMN_CREATE_CNT_DIST_IN_GROUPBY_FLAG_DESC_ = "create_cnt_dist_in_groupby_flag desc";
+
+    // static properties for create_avg_in_groupby_flag
+    public static final String COLUMN_CREATE_AVG_IN_GROUPBY_FLAG_ = "create_avg_in_groupby_flag";
+    public static final String COLUMN_CREATE_AVG_IN_GROUPBY_FLAG_ASC_ = "create_avg_in_groupby_flag asc";
+    public static final String COLUMN_CREATE_AVG_IN_GROUPBY_FLAG_DESC_ = "create_avg_in_groupby_flag desc";
+
+    // static properties for create_sum_in_groupby_flag
+    public static final String COLUMN_CREATE_SUM_IN_GROUPBY_FLAG_ = "create_sum_in_groupby_flag";
+    public static final String COLUMN_CREATE_SUM_IN_GROUPBY_FLAG_ASC_ = "create_sum_in_groupby_flag asc";
+    public static final String COLUMN_CREATE_SUM_IN_GROUPBY_FLAG_DESC_ = "create_sum_in_groupby_flag desc";
+
+    // static properties for create_min_in_groupby_flag
+    public static final String COLUMN_CREATE_MIN_IN_GROUPBY_FLAG_ = "create_min_in_groupby_flag";
+    public static final String COLUMN_CREATE_MIN_IN_GROUPBY_FLAG_ASC_ = "create_min_in_groupby_flag asc";
+    public static final String COLUMN_CREATE_MIN_IN_GROUPBY_FLAG_DESC_ = "create_min_in_groupby_flag desc";
+
+    // static properties for create_max_in_groupby_flag
+    public static final String COLUMN_CREATE_MAX_IN_GROUPBY_FLAG_ = "create_max_in_groupby_flag";
+    public static final String COLUMN_CREATE_MAX_IN_GROUPBY_FLAG_ASC_ = "create_max_in_groupby_flag asc";
+    public static final String COLUMN_CREATE_MAX_IN_GROUPBY_FLAG_DESC_ = "create_max_in_groupby_flag desc";
+
 
 
     /* ***********************************************
@@ -160,6 +213,21 @@ public class _EppdevColumn extends BasicEntity {
 
     // properties for create_compare_flag
     private Integer createCompareFlag;
+
+    // properties for create_cnt_dist_in_groupby_flag
+    private Integer createCntDistInGroupbyFlag;
+
+    // properties for create_avg_in_groupby_flag
+    private Integer createAvgInGroupbyFlag;
+
+    // properties for create_sum_in_groupby_flag
+    private Integer createSumInGroupbyFlag;
+
+    // properties for create_min_in_groupby_flag
+    private Integer createMinInGroupbyFlag;
+
+    // properties for create_max_in_groupby_flag
+    private Integer createMaxInGroupbyFlag;
 
 
     /* ***********************************************
@@ -245,6 +313,31 @@ public class _EppdevColumn extends BasicEntity {
         return createCompareFlag;
     }
 
+    // getters for create_cnt_dist_in_groupby_flag
+    public Integer getCreateCntDistInGroupbyFlag() {
+        return createCntDistInGroupbyFlag;
+    }
+
+    // getters for create_avg_in_groupby_flag
+    public Integer getCreateAvgInGroupbyFlag() {
+        return createAvgInGroupbyFlag;
+    }
+
+    // getters for create_sum_in_groupby_flag
+    public Integer getCreateSumInGroupbyFlag() {
+        return createSumInGroupbyFlag;
+    }
+
+    // getters for create_min_in_groupby_flag
+    public Integer getCreateMinInGroupbyFlag() {
+        return createMinInGroupbyFlag;
+    }
+
+    // getters for create_max_in_groupby_flag
+    public Integer getCreateMaxInGroupbyFlag() {
+        return createMaxInGroupbyFlag;
+    }
+
 
     /* ***********************************************
      * setters
@@ -327,6 +420,31 @@ public class _EppdevColumn extends BasicEntity {
     // getters for create_compare_flag
     public void setCreateCompareFlag(Integer createCompareFlag) {
         this.createCompareFlag = createCompareFlag;
+    }
+
+    // getters for create_cnt_dist_in_groupby_flag
+    public void setCreateCntDistInGroupbyFlag(Integer createCntDistInGroupbyFlag) {
+        this.createCntDistInGroupbyFlag = createCntDistInGroupbyFlag;
+    }
+
+    // getters for create_avg_in_groupby_flag
+    public void setCreateAvgInGroupbyFlag(Integer createAvgInGroupbyFlag) {
+        this.createAvgInGroupbyFlag = createAvgInGroupbyFlag;
+    }
+
+    // getters for create_sum_in_groupby_flag
+    public void setCreateSumInGroupbyFlag(Integer createSumInGroupbyFlag) {
+        this.createSumInGroupbyFlag = createSumInGroupbyFlag;
+    }
+
+    // getters for create_min_in_groupby_flag
+    public void setCreateMinInGroupbyFlag(Integer createMinInGroupbyFlag) {
+        this.createMinInGroupbyFlag = createMinInGroupbyFlag;
+    }
+
+    // getters for create_max_in_groupby_flag
+    public void setCreateMaxInGroupbyFlag(Integer createMaxInGroupbyFlag) {
+        this.createMaxInGroupbyFlag = createMaxInGroupbyFlag;
     }
 
 }

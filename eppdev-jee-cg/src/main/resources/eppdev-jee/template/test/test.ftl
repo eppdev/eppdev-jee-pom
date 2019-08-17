@@ -36,5 +36,14 @@ import ${basicConf.BASIC_PACKAGE_NAME}<#if moduleName?exists && moduleName?trim?
         Assert.assertNotNull(entityService.list(param));
     }
 
+
+    @Test
+    public void testListGroupBy(){
+        ${entityName}Param param = new ${entityName}Param();
+        param.set_pageNum(1);
+        param.set_pageSize(1);
+        Assert.assertNotNull(entityService.listGroupBy(param));
+    }
+
  }
  

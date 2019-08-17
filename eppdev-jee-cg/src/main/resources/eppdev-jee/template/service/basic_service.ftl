@@ -167,6 +167,18 @@ public abstract class BasicService<T extends BasicEntity, P extends BasicParam> 
 
 
     /**
+     * 获取分页列表[含GroupBy条件]
+     *
+     * @param param 参数值
+     * @return
+     */
+    public PageInfo<T> listGroupBy(P param) {
+        return new PageInfo<>(getDao().listGroupBy(param));
+    }
+
+
+
+    /**
      * 业务上根据逻辑主键判断此数据是否存在
      *
      * @param entity 要判断的对象
