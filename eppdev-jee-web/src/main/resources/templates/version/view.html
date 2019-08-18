@@ -6,7 +6,7 @@
 </head>
 <body>
 <nav th:replace="fragments/navbar :: navbar">navbar</nav>
-<div class="container">
+<div class="container-fluid">
     <div th:insert="fragments/alert :: alert">alert</div>
     <h3 class="text-center">数据库列表&lt;<span th:text="${version.versionName}">versionName</span>&gt;</h3>
     <div>

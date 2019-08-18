@@ -7,7 +7,7 @@
 </head>
 <body>
 <nav th:replace="fragments/navbar :: navbar">navbar</nav>
-<div class="container">
+<div class="container-fluid">
     <div th:insert="fragments/alert :: alert">alert</div>
     <div class="text-left">
         <a th:href="@{'/table/' + ${table.id} }">返回</a>
