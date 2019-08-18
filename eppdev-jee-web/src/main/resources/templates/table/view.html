@@ -6,7 +6,7 @@
 </head>
 <body>
 <nav th:replace="fragments/navbar :: navbar">navbar</nav>
-<div class="container">
+<div class="container-fluid">
     <div th:insert="fragments/alert :: alert">alert</div>
     <h3 class="text-center" th:text="${table.tableName + ' 表详情'}">表详情</h3>
     <hr/>
