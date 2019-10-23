@@ -1,5 +1,5 @@
 /* FileName: TableLogService.java
- * Copyright EPPDEV.CN(jinlong.hao@eppdev.cn)  All Rights Preserved!
+ * 郝金隆(jinlong.hao@eppdev.cn)(jinlong.hao@eppdev.cn)  All Rights Preserved!
  * Licensed By ANTI-996 License V1.0
  */
 
