@@ -1,10 +1,10 @@
 ---
 title: EPPDEV-JEE源代码
-subtitle: V1.6
-author: 郝金隆
+version: V1.6
+file-code: EPPDEV-JEE-SRC
+company: 郝金隆
+header-right: 2019-09
 date: 2019-09
-titlepage: true
-toc-own-page: true
 fontsize: 8pt
 ...
 
@@ -16,7 +16,7 @@ fontsize: 8pt
 ~~~java
 
 /* FileName: EppdevVersionTest.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -62,7 +62,7 @@ import cn.eppdev.jee.conf.service.EppdevVersionService;
 ~~~java
 
 /* FileName: EppdevIndexTest.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -108,7 +108,7 @@ import cn.eppdev.jee.conf.service.EppdevIndexService;
 ~~~java
 
 /* FileName: EppdevTableTest.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -154,7 +154,7 @@ import cn.eppdev.jee.conf.service.EppdevTableService;
 ~~~java
 
 /* FileName: EppdevUserTest.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -200,7 +200,7 @@ import cn.eppdev.jee.conf.service.EppdevUserService;
 ~~~java
 
 /* FileName: EppdevConfTest.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -246,7 +246,7 @@ import cn.eppdev.jee.conf.service.EppdevConfService;
 ~~~java
 
 /* FileName: EppdevColumnTest.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -292,7 +292,7 @@ import cn.eppdev.jee.conf.service.EppdevColumnService;
 ~~~java
 
 /* FileName: EppdevTableLogTest.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License V1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -339,7 +339,7 @@ import cn.eppdev.jee.conf.service.EppdevTableLogService;
 
 
 /* FileName: ApplicationTest.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -366,7 +366,7 @@ public class ApplicationTest{
 
 /*
  * # PasswordUtils.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -415,7 +415,7 @@ public class PasswordUtils {
 
 /*
  * FileName: RandomUtils.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -544,7 +544,7 @@ public class NameUtils {
 ~~~java
 
 /* FileName: StringUtils.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -660,7 +660,7 @@ public class StringUtils {
 
 /*
  * FileName: JsonUtils.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -1408,7 +1408,7 @@ public class _EppdevUserParam extends BasicParam {
 ~~~java
 
 /* FileName: EppdevUserParam.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -1431,7 +1431,7 @@ public class EppdevUserParam extends _EppdevUserParam {
 ~~~java
 
 /* FileName: EppdevIndexParam.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -1454,7 +1454,7 @@ public class EppdevIndexParam extends _EppdevIndexParam {
 ~~~java
 
 /* FileName: EppdevConfParam.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -1477,7 +1477,7 @@ public class EppdevConfParam extends _EppdevConfParam {
 ~~~java
 
 /* FileName: EppdevTableLogParam.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License V1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -1500,7 +1500,7 @@ public class EppdevTableLogParam extends _EppdevTableLogParam {
 ~~~java
 
 /* FileName: EppdevTableParam.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -1523,7 +1523,7 @@ public class EppdevTableParam extends _EppdevTableParam {
 ~~~java
 
 /* FileName: EppdevColumnParam.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -1546,7 +1546,7 @@ public class EppdevColumnParam extends _EppdevColumnParam {
 ~~~java
 
 /* FileName: EppdevVersionParam.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -1569,7 +1569,7 @@ public class EppdevVersionParam extends _EppdevVersionParam {
 ~~~java
 
 /* FileName: DimAreaInfoController.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -1607,7 +1607,7 @@ public class EppdevTableController extends BasicController<EppdevTable, EppdevTa
 ~~~java
 
 /* FileName: DimAreaInfoController.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -1645,7 +1645,7 @@ public class EppdevConfController extends BasicController<EppdevConf, EppdevConf
 ~~~java
 
 /* FileName: DimAreaInfoController.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -1683,7 +1683,7 @@ public class EppdevColumnController extends BasicController<EppdevColumn, Eppdev
 ~~~java
 
 /* FileName: DimAreaInfoController.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -1721,7 +1721,7 @@ public class EppdevUserController extends BasicController<EppdevUser, EppdevUser
 ~~~java
 
 /* FileName: DimAreaInfoController.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License V1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -1759,7 +1759,7 @@ public class EppdevTableLogController extends BasicController<EppdevTableLog, Ep
 ~~~java
 
 /* FileName: DimAreaInfoController.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -1797,7 +1797,7 @@ public class EppdevIndexController extends BasicController<EppdevIndex, EppdevIn
 ~~~java
 
 /* FileName: DimAreaInfoController.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -1835,7 +1835,7 @@ public class EppdevVersionController extends BasicController<EppdevVersion, Eppd
 ~~~java
 
 /* FileName: EppdevColumn.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -3061,7 +3061,7 @@ public class _EppdevTable extends BasicEntity {
 ~~~java
 
 /* FileName: EppdevTable.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -3164,7 +3164,7 @@ public class EppdevTable extends _EppdevTable{
 ~~~java
 
 /* FileName: EppdevTableLog.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License V1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -3189,7 +3189,7 @@ public class EppdevTableLog extends _EppdevTableLog {
 ~~~java
 
 /* FileName: EppdevIndex.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -3220,7 +3220,7 @@ public class EppdevIndex extends _EppdevIndex{
 ~~~java
 
 /* FileName: EppdevConf.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -3252,7 +3252,7 @@ public class EppdevConf extends _EppdevConf{
 ~~~java
 
 /* FileName: EppdevVersion.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -3297,7 +3297,7 @@ public class EppdevVersion extends _EppdevVersion{
 ~~~java
 
 /* FileName: EppdevUser.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -3319,7 +3319,7 @@ public class EppdevUser extends _EppdevUser{
 ~~~java
 
 /* FileName: EppdevTableService.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -3410,7 +3410,7 @@ public class EppdevTableService extends _EppdevTableService {
 ~~~java
 
 /* FileName: EppdevVersionService.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -3451,7 +3451,7 @@ public class EppdevVersionService extends _EppdevVersionService {
 ~~~java
 
 /* FileName: EppdevColumnService.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -3939,7 +3939,7 @@ public abstract class _EppdevColumnService extends BasicService<EppdevColumn, Ep
 ~~~java
 
 /* FileName: EppdevIndexService.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -3984,7 +3984,7 @@ public class EppdevIndexService extends _EppdevIndexService {
 ~~~java
 
 /* FileName: EppdevConfService.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -4168,7 +4168,7 @@ public class EppdevConfService extends _EppdevConfService {
 ~~~java
 
 /* FileName: EppdevUserService.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -4198,7 +4198,7 @@ public class EppdevUserService extends _EppdevUserService {
 ~~~java
 
 /* FileName: EppdevTableLogService.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License V1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -4244,7 +4244,7 @@ public class EppdevTableLogService extends _EppdevTableLogService {
 ~~~java
 
 /* FileName: EppdevIndexDao.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -4552,7 +4552,7 @@ public interface _EppdevColumnDao extends BasicDao<EppdevColumn, EppdevColumnPar
 ~~~java
 
 /* FileName: EppdevVersionDao.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -4574,7 +4574,7 @@ public interface EppdevVersionDao extends _EppdevVersionDao {
 ~~~java
 
 /* FileName: EppdevColumnDao.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -4596,7 +4596,7 @@ public interface EppdevColumnDao extends _EppdevColumnDao {
 ~~~java
 
 /* FileName: EppdevTableLogDao.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License V1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -4618,7 +4618,7 @@ public interface EppdevTableLogDao extends _EppdevTableLogDao {
 ~~~java
 
 /* FileName: EppdevUserDao.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -4640,7 +4640,7 @@ public interface EppdevUserDao extends _EppdevUserDao {
 ~~~java
 
 /* FileName: EppdevTableDao.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -4662,7 +4662,7 @@ public interface EppdevTableDao extends _EppdevTableDao {
 ~~~java
 
 /* FileName: EppdevConfDao.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -4793,7 +4793,7 @@ public class BasicParam {
 ~~~java
 
 /* FileName: BasicController.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -5066,7 +5066,7 @@ public class BasicEntity {
 ~~~java
 
 /* FileName: ColumnEntity.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License V1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -5119,7 +5119,7 @@ public class ColumnEntity {
 ~~~java
 
 /* FileName: RestResult.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
@@ -5395,7 +5395,7 @@ public abstract class BasicService<T extends BasicEntity, P extends BasicParam> 
 ~~~java
 
 /* FileName: SysUserService.java
- * Copyright EPPDEV-JEE, All Rights Preserved!
+ * Copyright 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * License: Anti-996 License 1.0
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */

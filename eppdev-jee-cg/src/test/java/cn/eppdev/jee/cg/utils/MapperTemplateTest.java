@@ -1,5 +1,5 @@
 /* FileName: MapperTemplateTest.java
- * Copyright EPPDEV.CN, All Rights Preserved!
+ * 郝金隆(jinlong.hao@eppdev.cn), All Rights Preserved!
  * Licensed By Anti-996 License 1.0
  */
 

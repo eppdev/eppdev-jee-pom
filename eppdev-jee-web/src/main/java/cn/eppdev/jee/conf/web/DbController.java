@@ -1,5 +1,5 @@
 /* FileName: DbController.java
- * Copyright EPPDEV.CN, All right preserved!
+ * 郝金隆(jinlong.hao@eppdev.cn), All right preserved!
  * Author: jinlong.hao
  * Lisenced by: Anti-996 License 1.0
  */

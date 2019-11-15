@@ -4,9 +4,9 @@
  * Auto created by eppdev-jee(http://jee.eppdev.cn)!
  */
 
-package cn.eppdev.jee.commons.entity;
+package ${BASIC_PACKAGE_NAME}.commons.entity;
 
-import cn.eppdev.jee.utils.JSONUtils;
+import ${BASIC_PACKAGE_NAME}.utils.JSONUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
