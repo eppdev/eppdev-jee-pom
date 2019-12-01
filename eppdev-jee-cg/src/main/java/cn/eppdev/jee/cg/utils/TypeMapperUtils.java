@@ -28,7 +28,7 @@ public class TypeMapperUtils {
         DB_TO_STD_MAP.put("VARCHAR", "varchar");
         DB_TO_STD_MAP.put("TINYTEXT", "varchar");
         DB_TO_STD_MAP.put("TEXT", "text");
-        DB_TO_STD_MAP.put("LONGTEXT", "text");
+        DB_TO_STD_MAP.put("LONGTEXT", "longtext");
         DB_TO_STD_MAP.put("MEDIUMTEXT", "text");
         DB_TO_STD_MAP.put("DATE", "datetime");
         DB_TO_STD_MAP.put("DATETIME", "datetime");

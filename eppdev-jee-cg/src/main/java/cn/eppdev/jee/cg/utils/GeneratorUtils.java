@@ -156,6 +156,7 @@ public class GeneratorUtils {
         list.add(new ColumnTypeInfo("char", "String", "char"));
         list.add(new ColumnTypeInfo("varchar", "String", "varchar"));
         list.add(new ColumnTypeInfo("text", "String", "text"));
+        list.add(new ColumnTypeInfo("longtext", "String", "longtext"));
         list.add(new ColumnTypeInfo("boolean", "Boolean", "bit(1)"));
         list.add(new ColumnTypeInfo("datetime", "java.util.Date", "datetime"));
         list.add(new ColumnTypeInfo("float", "Float", "float"));
