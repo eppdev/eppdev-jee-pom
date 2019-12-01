@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.eppdev.jee</groupId>
     <artifactId>eppdev-jee-pom</artifactId>
-    <version>0.1.6</version>
+    <version>0.1.7</version>
     <packaging>pom</packaging>
 
     <name>${project.groupId}:${project.artifactId}</name>
